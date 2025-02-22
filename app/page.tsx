@@ -99,19 +99,7 @@ export default function Home() {
               <img src="./SocialFlyClipped.png" className="h-14 rounded-lg dark:bg-transparent bg-black/80 p-2 px-4" alt="" />
 
             </motion.div>
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              onClick={toggleDarkMode}
-              className="p-2 px-4 rounded-full flex items-center bg-gray-800/10 backdrop-blur-lg hover:bg-white/20 dark:hover:bg-gray-800/20"
-            >
-              {darkMode ? (
-                <Sun className="h-7 w-7 text-yellow-500" />
-              ) : (
-                <Moon className="h-7 w-7 text-gray-600" />
-              )}
-              <span className="max-[450px]:hidden ml-6 text-gray-800 dark:text-white">Change Theme</span>
-            </motion.button>
+
             <div className="min-[768px]:hidden cursor-pointer" onClick={() => setIsOpen(!isOpen)}>
               <MenuIcon size={35} />
             </div>
@@ -183,7 +171,20 @@ export default function Home() {
                 Contact
               </motion.button>
 
+
             </div>
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={toggleDarkMode}
+              className="p-2 px-4 rounded-full flex items-center bg-gray-800/10 backdrop-blur-lg hover:bg-white/20 dark:hover:bg-gray-800/20"
+            >
+              {darkMode ? (
+                <Sun className="h-7 w-7 text-yellow-500" />
+              ) : (
+                <Moon className="h-7 w-7 text-gray-600" />
+              )}
+            </motion.button>
           </div>
         </div>
       </nav>
