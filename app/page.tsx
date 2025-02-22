@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Moon, Sun, ArrowUpCircle, Rocket, Palette, ChartBar, Regex, MenuIcon, BrainCircuit, Globe, Smartphone, BadgeCheck } from "lucide-react";
+import { Moon, Sun, ArrowUpCircle, Rocket, Palette, ChartBar, Regex, MenuIcon, BrainCircuit, Globe, Smartphone, BadgeCheck, ChartPie, Linkedin, Instagram, Mail, Phone } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { rules } from "@/constants/rules";
 import toast, { Toaster } from "react-hot-toast"
@@ -203,12 +203,13 @@ export default function Home() {
             >
               <div className="absolute -top-20 -left-20 w-40 h-40 bg-purple-300 dark:bg-purple-600 rounded-full mix-blend-multiply dark:mix-blend-soft-light filter blur-xl opacity-70 animate-blob"></div>
               <div className="absolute -bottom-20 right-20 w-40 h-40 bg-blue-300 dark:bg-blue-600 rounded-full mix-blend-multiply dark:mix-blend-soft-light filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
-              <div className="relative px-10">
-                <h1 className="text-6xl max-[520px]:text-4xl max-[520px]:text-center font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-6">
-                  Transform Your Social Media Presence
+              <div className="relative max-[450px]:px-3 px-10">
+                <h1 className="text-5xl max-[520px]:text-4xl max-[520px]:text-center font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent pb-2 mb-6">
+                  Transforming Business Challenges into Digital Success
                 </h1>
-                <p className="text-xl text-gray-600 max-[520px]:text-justify max-[520px]:text-lg dark:text-gray-300 mb-8 backdrop-blur-sm bg-white/30 dark:bg-gray-900/30 p-4 rounded-lg">
-                  We provide comprehensive digital solutions to help your business thrive and grow their digital footprint in the modern world.
+                <p className="text-lg text-justify w-full text-gray-600 max-[520px]:text-justify max-[520px]:text-lg dark:text-gray-300 mb-8 backdrop-blur-sm bg-white/30 dark:bg-gray-900/30 rounded-lg">
+                  At SocialFly Media, we simplify your business operations through smart automation and streamlined solutions. From enhancing productivity to boosting your online presence, we provide end-to-end digital strategies that reduce daily hassles and accelerate growth. Let's transform your business for the digital age.
+
                 </p>
                 <motion.button
                   whileHover={{ scale: 1.05 }}
@@ -255,7 +256,7 @@ export default function Home() {
               Comprehensive social media solutions for your business
             </p>
           </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="flex justify-evenly items-center flex-wrap ">
             {services.map((service, index) => (
               <motion.div
                 key={service.title}
@@ -263,7 +264,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.2 }}
-                className="backdrop-blur-lg bg-white/30 dark:bg-gray-800/30 p-8 rounded-xl border border-white/20 cursor-pointer dark:border-gray-700/20 hover:shadow-xl hover:shadow-blue-500/10 dark:hover:shadow-purple-500/10 transition-all group"
+                className="backdrop-blur-lg w-[350px] h-[250px] my-4 bg-white/30 dark:bg-gray-800/30 p-8 rounded-xl border border-white/20 cursor-pointer dark:border-gray-700/20 hover:shadow-xl hover:shadow-blue-500/10 dark:hover:shadow-purple-500/10 transition-all group"
               >
                 <div className="text-blue-600 dark:text-blue-400 mb-4 group-hover:scale-110 transition-transform">
                   {service.icon}
@@ -318,23 +319,13 @@ export default function Home() {
               <h2 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-6">
                 About Us
               </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-300 mb-6">
-                SocialFly Media is a dynamic and results-driven social media marketing agency dedicated to helping businesses grow and thrive in the digital age. We specialize in creating customized strategies that elevate your brand's presence across all social media platforms. From content creation and engagement to targeted advertising and analytics, we ensure your brand stands out in a crowded marketplace. Whether you're a startup or an established business, SocialFly Media is your trusted partner for all your social media marketing needs.
+              <p className="text-md max-[450px]:text-justify text-sm text-gray-600 dark:text-gray-300 mb-6">
+                At SocialFly Media, we empower businesses to achieve more by streamlining their processes, automating routine tasks, and elevating their digital presence. We recognize the complexities of managing day-to-day operations while striving for growth. That’s why we deliver comprehensive solutions designed to optimize workflows, minimize operational burdens, and accelerate business success.
+                From crafting dynamic websites and innovative web applications to strategically managing your social media presence, we create customized digital strategies that engage your target audience effectively. Our mission is to equip you with the tools and insights needed to thrive in today’s competitive digital landscape, enabling you to lead with agility and innovation.
+
               </p>
-              <ul className="space-y-4 text-gray-600 dark:text-gray-300">
-                <li className="flex items-center">
-                  <span className="mr-2 text-blue-600 dark:text-blue-400">✓</span>
-                  Expert Team of Social Media Specialists
-                </li>
-                <li className="flex items-center">
-                  <span className="mr-2 text-blue-600 dark:text-blue-400">✓</span>
-                  Data-Driven Strategy Development
-                </li>
-                <li className="flex items-center">
-                  <span className="mr-2 text-blue-600 dark:text-blue-400">✓</span>
-                  Proven Track Record of Success
-                </li>
-              </ul>
+              <p className="font-bold max-[450px]:text-sm text-lg">Partner with us to transform your business operations and expand your digital footprint.
+              </p>
             </motion.div>
           </div>
         </div>
@@ -350,29 +341,35 @@ export default function Home() {
           <h2 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-12">
             Our Products
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="flex justify-evenly items-center">
             {products.map((product) => (
-              <motion.div
-                key={product.id}
-                className="relative cursor-pointer rounded-lg overflow-hidden shadow-lg group"
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-              >
-                <img
-                  src={product.image}
-                  alt={product.title}
-                  className="w-full h-60 object-cover transition-transform duration-300 group-hover:scale-105"
-                />
+              <div key={product.id} className="flex flex-col justify-evenly items-center">
                 <motion.div
-                  className="absolute inset-0 bg-black/70 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  initial={{ opacity: 0 }}
-                  whileHover={{ opacity: 1 }}
+
+                  className="relative w-[500px] max-[550px]:w-[90%] max-[550px]:h-[200px] h-[350px] cursor-pointer rounded-lg overflow-hidden shadow-lg group"
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
                 >
-                  <h3 className="text-xl font-bold text-white mb-2">{product.title}</h3>
-                  <p className="text-gray-300 text-sm px-4">{product.description}</p>
+                  <img
+                    src={product.image}
+                    alt={product.title}
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                  <motion.div
+                    className="absolute inset-0 bg-black/70 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    initial={{ opacity: 0 }}
+                    whileHover={{ opacity: 1 }}
+                  >
+                    <h3 className="text-xl font-bold text-white mb-2">{product.title}</h3>
+                    <p className="text-gray-300 text-sm px-4">{product.description}</p>
+                  </motion.div>
                 </motion.div>
-              </motion.div>
+                <p className="w-[90%] max-[550px]:text-sm mt-8 text-justify text-md"><strong className="text-[#544EEA] text-xl max-[550px]:text-sm">EduFly</strong> is an all-in-one <strong className="text-[#544EEA] text-xl max-[550px]:text-sm">School ERP solution</strong> designed to transform the way educational institutions operate. From seamless student enrollment to efficient staff management,  brings every aspect of school administration under one unified platform, streamlining processes like never before.
+                  Built with intuitive interfaces and powerful functionalities, EduFly bridges the communication gap between teachers, students, and parents, fostering a collaborative and transparent educational ecosystem. With exciting and interactive activities crafted especially for kids, EduFly makes learning not just effective but fun too!
+                  Say goodbye to manual tasks and complex workflows—EduFly automates administrative processes, tracks student performance, and manages extracurricular programs effortlessly. This allows schools to focus on their core mission: providing exceptional education.
+                </p>
+              </div>
             ))}
           </div>
         </div>
@@ -483,19 +480,19 @@ export default function Home() {
             <div>
               <h3 className="text-xl font-bold">Contact</h3>
               <ul className="mt-2 space-y-2">
-                <li className="text-gray-400 hover:text-white">Email: socialflymedia2024@gmail.com</li>
-                <li className="text-gray-400 hover:text-white">Phone: +91 8126040011</li>
+                <li className="text-gray-400 flex items-center hover:text-white"> <Mail size={20} className="mr-3" /> Email: socialflymedia2024@gmail.com</li>
+                <li className="text-gray-400 flex items-center hover:text-white"> <Phone size={20} className="mr-3" /> Phone: +91 8126040011, +91 8171254458</li>
               </ul>
             </div>
             <div>
               <h3 className="text-xl font-bold">Follow Us</h3>
               <div className="flex space-x-4 mt-2">
-                <a href="https://www.linkedin.com/company/social-flymedia/posts/?feedView=all" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white">
-                  Linkedin
+                <a href="https://www.linkedin.com/company/social-flymedia/posts/?feedView=all" target="_blank" rel="noopener noreferrer" className="text-gray-400 flex justify-evenly items-center hover:text-white">
+                  <Linkedin size={20} className="mr-2" />Linkedin
                 </a>
 
-                <a href="https://www.instagram.com/socialflymediaa/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white">
-                  Instagram
+                <a href="https://www.instagram.com/socialflymediaa/" target="_blank" rel="noopener noreferrer" className="text-gray-400 flex justify-evenly items-center hover:text-white">
+                  <Instagram size={20} className="mr-2" />Instagram
                 </a>
               </div>
             </div>
@@ -540,6 +537,11 @@ const services = [
     title: "SEO Optimization",
     description: "Improve your search rankings and drive organic traffic to your website.",
     icon: <ChartBar className="h-8 w-8" />,
+  },
+  {
+    title: "Business Intelligence Service",
+    description: "We analyze data to identify trends and insights, enabling smarter decisions and business growth.",
+    icon: <ChartPie className="h-8 w-8" />,
   },
 ];
 
