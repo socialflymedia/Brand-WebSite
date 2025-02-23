@@ -18,7 +18,7 @@ interface ruleType {
 }
 
 export default function Home() {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [data, setData] = useState<payloadData>({
@@ -70,6 +70,7 @@ export default function Home() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     element?.scrollIntoView({ behavior: "smooth" });
@@ -79,6 +80,7 @@ export default function Home() {
     setDarkMode(!darkMode);
     document.documentElement.classList.toggle("dark");
   };
+
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
