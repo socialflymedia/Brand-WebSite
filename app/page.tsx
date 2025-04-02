@@ -378,6 +378,69 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Testimonials Section */}
+      <section
+        id="testimonials"
+        className="py-20 bg-white/50 dark:bg-gray-900/50 backdrop-blur-lg"
+      >
+        <div className="w-full mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
+              What Our Clients Say
+            </h2>
+            <p className="text-xl text-gray-600 dark:text-gray-300">
+              Hear from businesses we've helped transform
+            </p>
+          </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="backdrop-blur-lg bg-white/30 dark:bg-gray-800/30 p-6 rounded-xl border border-white/20 dark:border-gray-700/20 hover:shadow-xl hover:shadow-blue-500/10 dark:hover:shadow-purple-500/10 transition-all"
+            >
+              <p className="text-gray-600 dark:text-gray-300 mb-4 italic">
+                "SocialFly Media transformed our online presence with their innovative strategies. Our engagement rates tripled within months!"
+              </p>
+              <div className="flex items-center">
+                <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-xl mr-4">
+                  JS
+                </div>
+                <div>
+                  <p className="font-bold text-gray-900 dark:text-white">John Smith</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">CEO, TechFlow Solutions</p>
+                </div>
+              </div>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+              className="backdrop-blur-lg bg-white/30 dark:bg-gray-800/30 p-6 rounded-xl border border-white/20 dark:border-gray-700/20 hover:shadow-xl hover:shadow-blue-500/10 dark:hover:shadow-purple-500/10 transition-all"
+            >
+              <p className="text-gray-600 dark:text-gray-300 mb-4 italic">
+                "The EduFly ERP system streamlined our school operations incredibly. It's user-friendly and saved us countless hours!"
+              </p>
+              <div className="flex items-center">
+                <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-xl mr-4">
+                  ML
+                </div>
+                <div>
+                  <p className="font-bold text-gray-900 dark:text-white">Mary Lee</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">Principal, BrightFuture Academy</p>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
 
       {/* Contact Section */}
       <section
