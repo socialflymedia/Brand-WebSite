@@ -9,10 +9,9 @@ const BlurText = ({
   direction = 'top', // 'top' or 'bottom'
   threshold = 0.1,
   rootMargin = '0px',
-  animationFrom,
-  animationTo,
+
   easing = 'easeOutCubic',
-  onAnimationComplete,
+
 }) => {
   const elements = animateBy === 'words' ? text.split(' ') : text.split('');
   const [inView, setInView] = useState(false);
@@ -52,10 +51,10 @@ const BlurText = ({
   const springs = useSprings(
     elements.length,
     elements.map((_, i) => ({
-      from: animationFrom || defaultFrom,
+      from:  defaultFrom,
       to: inView
         ? async (next) => {
-          for (const step of (animationTo || defaultTo)) {
+          for (const step of ( defaultTo)) {
             await next(step);
           }
           animatedCount.current += 1;
@@ -63,7 +62,7 @@ const BlurText = ({
             onAnimationComplete();
           }
         }
-        : animationFrom || defaultFrom,
+        :  defaultFrom,
       delay: i * delay,
       config: { easing },
     }))
