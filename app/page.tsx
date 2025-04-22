@@ -216,29 +216,25 @@ export default function Home() {
         viewport={{ once: true }}
         className="w-full h-full"
       >
-        {typeof window !== 'undefined' ? (
-          videoError ? (
-            <div className="rounded-lg shadow-2xl w-full h-full min-h-[256px] bg-gray-200 dark:bg-gray-800 flex items-center justify-center">
-              <p className="text-gray-600 dark:text-gray-400">Video not available</p>
-            </div>
-          ) : (
-            <video
-              className="rounded-lg shadow-2xl w-full h-full min-h-[256px] object-cover animate-fadeIn"
-              autoPlay
-              loop
-              muted
-              playsInline
-              onError={() => setVideoError(true)}
-            >
-              <source src="/assets/about-video.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          )
-        ) : (
-          <div className="rounded-lg shadow-2xl w-full h-full min-h-[256px] bg-gray-200 dark:bg-gray-800 flex items-center justify-center">
-            <p className="text-gray-600 dark:text-gray-400">Loading video...</p>
-          </div>
-        )}
+       {typeof window !== 'undefined' && !/Mobi|Android/i.test(navigator.userAgent) ? (
+  videoError ? (
+    <div className="rounded-lg shadow-2xl w-full h-full min-h-[256px] bg-gray-200 dark:bg-gray-800 flex items-center justify-center">
+      <p className="text-gray-600 dark:text-gray-400">Video not available</p>
+    </div>
+  ) : (
+    <video
+      className="rounded-lg shadow-2xl w-full h-full min-h-[256px] object-cover animate-fadeIn"
+      autoPlay
+      loop
+      muted
+      playsInline
+      onError={() => setVideoError(true)}
+    >
+      <source src="/assets/about-video.mp4" type="video/mp4" />
+    </video>
+  )
+) : null}
+
       </motion.div>
 
       <motion.div
