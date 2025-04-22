@@ -330,9 +330,9 @@ export default function Home() {
               },
               {
                 text: "SocialFly Media played a key role in getting our dairy business off the ground — from setup and launch to marketing and supply chain. His support made a real difference",
-                name: "Maanik Chaudhary",
+                name: " CEO, Maanik Chaudhary",
                 title: "Advika Dairy Farms",
-                initials: "AC",
+                initials: "MC",
               },
             ].map((testimonial, index) => (
               <motion.div
