@@ -64,8 +64,8 @@ export default function ContactPage() {
             <div>
               <h3 className="text-lg font-semibold mb-2">Social Media</h3>
               <div className="text-muted-foreground flex space-x-3">
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">LinkedIn</a>
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">Instagram</a>
+                <a href="ttps://www.linkedin.com/company/social-flymedia/" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">LinkedIn</a>
+                <a href="https://www.instagram.com/socialflymediaa" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">Instagram</a>
               </div>
             </div>
           </div>
