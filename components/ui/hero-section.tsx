@@ -17,16 +17,16 @@ export default function HeroSection(this: any) {
           variants={textVariant(0.1)}
           initial="hidden"
           animate="visible"
-          className="text-4xl md:text-5xl lg:text-6xl font-bold gradient-text mb-6"
+          className="text-4xl md:text-5xl lg:text-6xl font-thin gradient-text mb-6 px-4"
         >
           AI-Powered SaaS Solutions for Your Business
         </motion.h1>
         
         <motion.p
-          variants={fadeIn("up", 0.3)}
+          variants={fadeIn("up", 0.1)}
           initial="hidden"
           animate="visible"
-          className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto"
+          className="text-base md:text-base text-gray-500 text-muted-foreground mb-8 max-w-2xl mx-auto"
         >
           Leverage cutting-edge AI to streamline operations, unlock actionable
           insights, and drive exponential growth with our SaaS platforms and
@@ -39,9 +39,18 @@ export default function HeroSection(this: any) {
           animate="visible"
         >
           <Link href="/contact">
-            <Button size="lg" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white">
-              Get Started
-            </Button>
+          {/* <Button size="lg" className="bg-transparent border-2 border-white text-white rounded-xl hover:bg-white hover:text-black">
+  Get Started
+</Button> */}
+<Button
+  size="lg"
+  className="bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-white/20 hover:border-white/30 rounded-l shadow-md"
+>
+  Get Started
+</Button>
+
+
+
           </Link>
         </motion.div>
       </div>
