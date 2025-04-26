@@ -38,16 +38,19 @@ export default function HeroSection(this: any) {
           initial="hidden"
           animate="visible"
         >
-          <Link href="/contact">
+          <Link  target="_blank" href="https://app.youform.com/forms/hiv3vogo">
+          
           {/* <Button size="lg" className="bg-transparent border-2 border-white text-white rounded-xl hover:bg-white hover:text-black">
   Get Started
 </Button> */}
 <Button
+ 
   size="lg"
   className="bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-white/20 hover:border-white/30 rounded-l shadow-md"
 >
   Get Started
 </Button>
+
 
 
 

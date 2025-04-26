@@ -85,74 +85,15 @@ export default function ContactSection() {
           viewport={{ once: true, amount: 0.25 }}
           className="max-w-xl mx-auto"
         >
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-              <FormField
-                control={form.control}
-                name="name"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Name</FormLabel>
-                    <FormControl>
-                      <Input placeholder="Your name" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              
-              <FormField
-                control={form.control}
-                name="email"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Email</FormLabel>
-                    <FormControl>
-                      <Input placeholder="Your email" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              
-              <FormField
-                control={form.control}
-                name="message"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Message</FormLabel>
-                    <FormControl>
-                      <Textarea 
-                        placeholder="Maximum of 500 characters" 
-                        className="resize-none min-h-[120px]"
-                        {...field} 
-                      />
-                    </FormControl>
-                    <div className="flex justify-between">
-                      <FormMessage />
-                      <p className="text-xs text-muted-foreground">
-                        {field.value.length}/500
-                      </p>
-                    </div>
-                  </FormItem>
-                )}
-              />
-              
-              <Button 
-                type="submit" 
-                className="w-full"
-                disabled={isSubmitting}
-              >
-                {isSubmitting ? "Sending..." : "Send Message"}
-              </Button>
-              
-              {isSuccess && (
-                <div className="bg-green-500/10 border border-green-500/20 text-green-500 p-4 rounded-md text-center">
-                  Your message has been sent successfully! We'll be in touch shortly.
-                </div>
-              )}
-            </form>
-          </Form>
+        <iframe
+  src="https://app.youform.com/forms/hiv3vogo"
+  loading="lazy"
+  width="100%"
+  height="700"
+  frameBorder="0"
+
+/>
+
         </motion.div>
       </div>
     </section>
