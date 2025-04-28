@@ -98,7 +98,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t mt-12 pt-8 text-center text-sm text-muted-foreground">
-          <p>© 2025 SocialFly AI. All rights reserved.</p>
+          <p>© 2025 SocialFly Networks. All rights reserved.</p>
         </div>
       </div>
     </footer>
