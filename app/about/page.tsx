@@ -55,7 +55,7 @@ export default function AboutPage() {
           <motion.div variants={fadeIn("left", 0.3)}>
             <h2 className="text-2xl md:text-3xl font-bold mb-6">Our Mission</h2>
             <p className="text-muted-foreground mb-6">
-              At SocialFly AI, our mission is to democratize access to advanced AI technologies for businesses of all sizes. We believe that artificial intelligence should be accessible, understandable, and most importantly, actionable.
+              At SocialFly Media, our mission is to democratize access to advanced AI technologies for businesses of all sizes. We believe that artificial intelligence should be accessible, understandable, and most importantly, actionable.
             </p>
             <p className="text-muted-foreground">
               We're dedicated to helping our clients navigate the complex world of AI and harness its power to achieve tangible business outcomes. Through our SaaS platforms and analytics tools, we enable organizations to streamline operations, gain valuable insights, and drive sustainable growth.
@@ -102,13 +102,13 @@ export default function AboutPage() {
         >
           <h2 className="text-2xl md:text-3xl font-bold mb-6">Our Story</h2>
           <p className="text-muted-foreground mb-6">
-            Founded in 2024, SocialFly AI emerged from a vision to bridge the gap between advanced AI capabilities and practical business applications. Our founders, experienced in both technology development and business operations, recognized that while AI held tremendous potential, many organizations struggled to implement it effectively.
+            Founded in 2024, SocialFly Media emerged from a vision to bridge the gap between advanced AI capabilities and practical business applications. Our founders, experienced in both technology development and business operations, recognized that while AI held tremendous potential, many organizations struggled to implement it effectively.
           </p>
           <p className="text-muted-foreground mb-6">
             Starting with a small team of dedicated AI specialists and software engineers, we developed our first SaaS platform aimed at simplifying data analytics for small to medium-sized businesses. The success of this initial offering led to rapid growth and expansion of our service portfolio.
           </p>
           <p className="text-muted-foreground">
-            Today, SocialFly AI serves clients across various industries, from education and healthcare to finance and retail. Our team has grown to include experts in machine learning, data science, software development, and business strategy, all united by a common goal: to make AI accessible, understandable, and impactful for our clients.
+            Today, SocialFly Media serves clients across various industries, from education and healthcare to finance and retail. Our team has grown to include experts in machine learning, data science, software development, and business strategy, all united by a common goal: to make AI accessible, understandable, and impactful for our clients.
           </p>
         </motion.div>
       </div>

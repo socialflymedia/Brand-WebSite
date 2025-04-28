@@ -20,13 +20,13 @@ export default function AboutSection() {
               variants={fadeIn("right", 0.1)}
               className="text-3xl md:text-4xl font-bold gradient-text mb-6"
             >
-              About SocialFly AI
+              About SocialFly Networks
             </motion.h2>
             <motion.p
               variants={fadeIn("right", 0.2)}
               className="text-lg text-muted-foreground mb-6"
             >
-              At SocialFly AI, we harness the power of artificial intelligence to deliver SaaS solutions that transform how businesses operate. Our advanced analytics and automation tools provide actionable insights, optimize workflows, and drive measurable growth.
+              At SocialFly Networks, we harness the power of artificial intelligence to deliver SaaS solutions that transform how businesses operate. Our advanced analytics and automation tools provide actionable insights, optimize workflows, and drive measurable growth.
             </motion.p>
             <motion.p
               variants={fadeIn("right", 0.3)}

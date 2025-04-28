@@ -9,7 +9,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="md:col-span-2">
             <Link href="/" className="text-2xl font-bold gradient-text">
-              SocialFly AI
+              SocialFly Networks
             </Link>
             <p className="mt-4 text-muted-foreground max-w-md">
               Empower your business with AI-driven SaaS and analytics solutions.

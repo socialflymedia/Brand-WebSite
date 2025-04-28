@@ -22,16 +22,67 @@ export default function HeroSection(this: any) {
           AI-Powered SaaS Solutions for Your Business
         </motion.h1>
         
-        <motion.p
-          variants={fadeIn("up", 0.1)}
+        <motion.div
+          variants={fadeIn("up", 0.2)}
           initial="hidden"
           animate="visible"
-          className="text-base md:text-base text-gray-500 text-muted-foreground mb-8 max-w-2xl mx-auto"
+          className="relative mb-12 max-w-2xl mx-auto text-center"
         >
-          Leverage cutting-edge AI to streamline operations, unlock actionable
-          insights, and drive exponential growth with our SaaS platforms and
-          analytics tools.
-        </motion.p>
+          {/* Subtle glow behind subtext */}
+          <div className="absolute inset-0 bg-blue-500/5 blur-3xl rounded-full transform -translate-y-1/4"></div>
+          
+          {/* Animated line above text */}
+          <motion.div 
+            className="h-px w-24 mx-auto mb-6 bg-gradient-to-r from-transparent via-blue-400/50 to-transparent"
+            animate={{ width: ["0%", "40%", "30%"] }}
+            transition={{ duration: 3, repeat: Infinity, repeatType: "reverse" }}
+          ></motion.div>
+          
+          {/* Enhanced Subtext */}
+          <motion.p
+            variants={fadeIn("up", 0.3)}
+            initial="hidden"
+            animate="visible"
+            className="text-lg md:text-xl font-light tracking-wider leading-relaxed"
+          >
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-300 via-white to-purple-300 drop-shadow-[0_2px_2px_rgba(0,0,0,0.4)]">
+              Building Tomorrow's Brands with Today's Technology.
+            </span>
+          </motion.p>
+          
+          {/* Enhanced funnel effect */}
+          <div className="absolute inset-x-0 -bottom-8 h-24 bg-gradient-to-t from-background via-gray-800/10 to-transparent rounded-t-full opacity-70"></div>
+          
+          {/* Animated particles */}
+          <div className="absolute inset-0 overflow-hidden">
+            {[...Array(5)].map((_, i) => (
+              <motion.div
+                key={i}
+                className="absolute w-1 h-1 rounded-full bg-white/40"
+                style={{
+                  left: `${20 + i * 15}%`,
+                  top: `${50 + (i % 3) * 10}%`
+                }}
+                animate={{
+                  y: [0, -40, 0],
+                  opacity: [0, 1, 0]
+                }}
+                transition={{
+                  duration: 2 + i,
+                  repeat: Infinity,
+                  delay: i * 0.5
+                }}
+              />
+            ))}
+          </div>
+        </motion.div>
+
+
+
+
+
+
+
         
         <motion.div
           variants={fadeIn("up", 0.5)}

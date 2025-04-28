@@ -10,6 +10,7 @@ import ThemeToggle from "@/components/theme-toggle";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useTheme } from "next-themes";
+
 const navLinks = [
   { name: "Home", href: "/" },
   { name: "Services", href: "/services" },
@@ -19,12 +20,18 @@ const navLinks = [
 ];
 
 export default function Header() {
-  const { theme } = useTheme();
+  const { theme, resolvedTheme } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
 
   const toggleMenu = () => setIsOpen(!isOpen);
+
+  // Mount effect to avoid hydration mismatch
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -40,6 +47,9 @@ export default function Header() {
   useEffect(() => {
     setIsOpen(false);
   }, [pathname]);
+
+  // Only show the correct logo after client-side hydration
+  const isDarkMode = mounted && (resolvedTheme === "dark");
 
   return (
     <header
@@ -58,18 +68,26 @@ export default function Header() {
             transition={{ duration: 0.5 }}
             className="flex items-center"
           >
-    {theme === "dark" ? (
-  <Image
-    src="/SocialFlyClipped.png"
-    alt="SocialFly AI Logo"
-    width={100}
-    height={100}
-    className="rounded-full"
-  />
-) : (
-  <span className="gradient-text font-bold text-xl">SocialFly Media</span>
-)}
-
+            {!mounted ? (
+              // Show placeholder or default logo during SSR/hydration
+              <div className="w-[100px] h-[100px] rounded-full bg-gray-200" />
+            ) : isDarkMode ? (
+              <Image
+                src="/SFN_white_transparent_logo.png"
+                alt="SocialFly Networks Logo"
+                width={100}
+                height={100}
+                className="rounded-full"
+              />
+            ) : (
+              <Image
+                src="/SFN_black_transparent_logo.png"
+                alt="SocialFly Networks Logo"
+                width={100}
+                height={100}
+                className="rounded-full"
+              />
+            )}
           </motion.div>
         </Link>
 

@@ -65,7 +65,7 @@ export type TestimonialType = {
 
 export const testimonials: TestimonialType[] = [
   {
-    content: "They helped me to develop Instant EduDoc - an AI note taking website. SocialFlyMedia individuals were exceptional in the development of our project website. They welcomed feedback and made improvements accordingly. Great work!",
+    content: "They helped me to develop Instant EduDoc - an AI note taking website. SocialFlyNetworks individuals were exceptional in the development of our project website. They welcomed feedback and made improvements accordingly. Great work!",
     author: "Shivam Maurya",
     position: "CEO, Programming With Maurya",
     initials: "SM",
@@ -77,7 +77,7 @@ export const testimonials: TestimonialType[] = [
     initials: "SS",
   },
   {
-    content: "SocialFly Media played a key role in getting our dairy business off the ground — from setup and launch to marketing and supply chain. His support made a real difference.",
+    content: "SocialFly Networks played a key role in getting our dairy business off the ground — from setup and launch to marketing and supply chain. His support made a real difference.",
     author: "Maanik Chaudhary",
     position: "CEO, Advika Dairy Farms",
     initials: "MC",
@@ -94,6 +94,6 @@ export const products: ProductType[] = [
   {
     name: "EduFly",
     description: "An all-in-one School ERP solution designed to transform the way educational institutions operate. From seamless student enrollment to efficient staff management, brings every aspect of school administration under one unified platform, streamlining processes like never before.",
-    image: "https://images.pexels.com/photos/3153204/pexels-photo-3153204.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    image: "/landing_page.png",
   },
 ];
