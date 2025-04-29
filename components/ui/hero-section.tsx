@@ -32,11 +32,11 @@ export default function HeroSection(this: any) {
           <div className="absolute inset-0 bg-blue-500/5 blur-3xl rounded-full transform -translate-y-1/4"></div>
           
           {/* Animated line above text */}
-          <motion.div 
-            className="h-px w-24 mx-auto mb-6 bg-gradient-to-r from-transparent via-blue-400/50 to-transparent"
+            <motion.div 
+            className="h-px w-24 mx-auto mb-6 bg-gradient-to-r from-transparent via-blue-400/50 to-transparent dark:via-blue-700/50 dark:from-transparent dark:to-transparent"
             animate={{ width: ["0%", "40%", "30%"] }}
             transition={{ duration: 3, repeat: Infinity, repeatType: "reverse" }}
-          ></motion.div>
+            ></motion.div>
           
           {/* Enhanced Subtext */}
           <motion.p
@@ -45,7 +45,9 @@ export default function HeroSection(this: any) {
             animate="visible"
             className="text-lg md:text-xl font-light tracking-wider leading-relaxed"
           >
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-300 via-white to-purple-300 drop-shadow-[0_2px_2px_rgba(0,0,0,0.4)]">
+            <span
+              className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-black-100 to-purple-700 drop-shadow-[0_2px_2px_rgba(0,0,0,0.4)] dark:from-blue-300 dark:via-white dark:to-purple-300 dark:drop-shadow-[0_2px_2px_rgba(0,0,0,0.4)]"
+            >
               Building Tomorrow's Brands with Today's Technology.
             </span>
           </motion.p>
@@ -95,9 +97,8 @@ export default function HeroSection(this: any) {
   Get Started
 </Button> */}
 <Button
- 
   size="lg"
-  className="bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-white/20 hover:border-white/30 rounded-l shadow-md"
+  className="bg-white/10 backdrop-blur-md border border-white/20 text-black dark:text-white border-blue-500 hover:bg-white-200/20 hover:border-blue-500/30 rounded-l shadow-md"
 >
   Get Started
 </Button>
