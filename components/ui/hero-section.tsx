@@ -46,14 +46,14 @@ export default function HeroSection(this: any) {
             className="text-lg md:text-xl font-light tracking-wider leading-relaxed"
             >
             <span
-              className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-gray-800 to-purple-700 drop-shadow-[0_2px_2px_rgba(0,0,0,0.4)] dark:from-blue-500 dark:via-stone dark:to-purple-700 dark:drop-shadow-[0_2px_2px_rgba(0,0,0,0.4)]"
+              className="bg-clip-text text-transparent bg-gradient-to-r from-violet-600 via-black-200 to-purple-700 drop-shadow-[0_2px_2px_rgba(0,0,0,0.4)] dark:from-blue-500 dark:via-stone dark:to-purple-700 dark:drop-shadow-[0_2px_2px_rgba(0,0,0,0.4)]"
             >
               Building Tomorrow's Brands with Today's Technology.
             </span>
             </motion.p>
           
           {/* Enhanced funnel effect */}
-          <div className="absolute inset-x-0 -bottom-8 h-24 bg-gradient-to-t from-background via-gray-800/10 to-transparent rounded-t-full opacity-70 dark:via-gray-800/10 via-gray-300/10"></div>
+          <div className="absolute inset-x-0 -bottom-8 h-24 bg-gradient-to-t from-background via-violet-700/25 to-transparent rounded-t-full opacity-70 dark:via-gray-800/10 via-gray-300/10"></div>
           
           {/* Animated particles */}
           <div className="absolute inset-0 overflow-hidden">
