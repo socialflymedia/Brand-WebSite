@@ -29,7 +29,7 @@ export default function HeroSection(this: any) {
           className="relative mb-12 max-w-2xl mx-auto text-center"
         >
           {/* Subtle glow behind subtext */}
-          <div className="absolute inset-0 bg-blue-500/5 blur-3xl rounded-full transform -translate-y-1/4"></div>
+          <div className="absolute inset-0 bg-blue-500/5 blur-3xl rounded-full transform -translate-y-1/4 dark:bg-blue-500/5 bg-blue-300/5"></div>
           
           {/* Animated line above text */}
             <motion.div 
@@ -39,41 +39,41 @@ export default function HeroSection(this: any) {
             ></motion.div>
           
           {/* Enhanced Subtext */}
-          <motion.p
+            <motion.p
             variants={fadeIn("up", 0.3)}
             initial="hidden"
             animate="visible"
             className="text-lg md:text-xl font-light tracking-wider leading-relaxed"
-          >
+            >
             <span
-              className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-black-100 to-purple-700 drop-shadow-[0_2px_2px_rgba(0,0,0,0.4)] dark:from-blue-300 dark:via-white dark:to-purple-300 dark:drop-shadow-[0_2px_2px_rgba(0,0,0,0.4)]"
+              className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-gray-800 to-purple-700 drop-shadow-[0_2px_2px_rgba(0,0,0,0.4)] dark:from-blue-500 dark:via-stone dark:to-purple-700 dark:drop-shadow-[0_2px_2px_rgba(0,0,0,0.4)]"
             >
               Building Tomorrow's Brands with Today's Technology.
             </span>
-          </motion.p>
+            </motion.p>
           
           {/* Enhanced funnel effect */}
-          <div className="absolute inset-x-0 -bottom-8 h-24 bg-gradient-to-t from-background via-gray-800/10 to-transparent rounded-t-full opacity-70"></div>
+          <div className="absolute inset-x-0 -bottom-8 h-24 bg-gradient-to-t from-background via-gray-800/10 to-transparent rounded-t-full opacity-70 dark:via-gray-800/10 via-gray-300/10"></div>
           
           {/* Animated particles */}
           <div className="absolute inset-0 overflow-hidden">
             {[...Array(5)].map((_, i) => (
               <motion.div
-                key={i}
-                className="absolute w-1 h-1 rounded-full bg-white/40"
-                style={{
-                  left: `${20 + i * 15}%`,
-                  top: `${50 + (i % 3) * 10}%`
-                }}
-                animate={{
-                  y: [0, -40, 0],
-                  opacity: [0, 1, 0]
-                }}
-                transition={{
-                  duration: 2 + i,
-                  repeat: Infinity,
-                  delay: i * 0.5
-                }}
+          key={i}
+          className="absolute w-1 h-1 rounded-full bg-black dark:bg-white"
+          style={{
+            left: `${20 + i * 15}%`,
+            top: `${50 + (i % 3) * 10}%`
+          }}
+          animate={{
+            y: [0, -40, 0],
+            opacity: [0, 1, 0]
+          }}
+          transition={{
+            duration: 2 + i,
+            repeat: Infinity,
+            delay: i * 0.5
+          }}
               />
             ))}
           </div>
