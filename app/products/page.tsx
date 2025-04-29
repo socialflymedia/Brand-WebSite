@@ -47,8 +47,8 @@ export default function ProductsPage() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent"></div>
               <div className="absolute bottom-0 left-0 p-8">
-                <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">EduFly</h2>
-                <p className="text-white/80 text-lg mb-4">Smart School ERP Solution</p>
+                <h2 className="text-3xl md:text-4xl font-bold mb-2 text-black dark:text-white">EduFly</h2>
+                <p className="text-black/80 dark:text-white/80 text-lg mb-4">Smart School ERP Solution</p>
               </div>
             </div>
             <CardContent className="p-8">
