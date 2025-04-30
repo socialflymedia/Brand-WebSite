@@ -5,6 +5,7 @@ import { fadeIn } from "@/lib/animations";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function ProductsPage() {
   return (
@@ -39,13 +40,16 @@ export default function ProductsPage() {
         >
           <Card className="overflow-hidden border-0 shadow-xl">
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20 mix-blend-overlay"></div>
-              <img
-                src="/landing_page.png"
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10 mix-blend-overlay"></div>
+                <Image
+                priority
+                src="/lpb.png"
                 alt="EduFly"
-                className="w-full h-[300px] object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent"></div>
+                className="w-full h-[200px] object-cover opacity-100"
+                width={100}
+                height={100}
+                />
+                <div className="absolute inset-0 from-background/100 to-transparent/0"></div>
               <div className="absolute bottom-0 left-0 p-8">
                 <h2 className="text-3xl md:text-4xl font-bold mb-2 text-black dark:text-white">EduFly</h2>
                 <p className="text-black/80 dark:text-white/80 text-lg mb-4">Smart School ERP Solution</p>
