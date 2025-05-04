@@ -13,7 +13,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "SocialFly AI - AI-Powered SaaS Solutions",
+  title: "SocialFly Networks - AI-Powered SaaS Solutions",
   description: "Leverage cutting-edge AI to streamline operations, unlock actionable insights, and drive exponential growth with our SaaS platforms and analytics tools.",
 };
 
