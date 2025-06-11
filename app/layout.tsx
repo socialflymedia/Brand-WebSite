@@ -29,6 +29,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
+       <head>
+  
+        <link rel="icon" href="/favicon1.ico" />
+        <link rel="apple-touch-icon" href="/favicon1.ico" />
+      </head>
       <body className={`${inter.variable} ${poppins.variable} font-sans`}>
         <ThemeProvider
           attribute="class"
