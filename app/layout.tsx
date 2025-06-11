@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   description:
     "Boost your business with custom website & mobile app development, SaaS platforms, ecommerce solutions, social media marketing & management, Instagram ad optimization, Google Business Profile & Meta Ads setup.",
   icons: {
-    icon: '/favicon1.png',
+    icon: '/favicon1.ico',
   },
 };
 
