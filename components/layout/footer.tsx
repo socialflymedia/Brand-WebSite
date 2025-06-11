@@ -66,7 +66,7 @@ export default function Footer() {
             <h3 className="text-lg font-medium">Contact</h3>
             <ul className="mt-4 space-y-2">
               <li className="text-muted-foreground">
-                Email: socialflymedia2024@gmail.com
+                Email: socialflynetworks@gmail.com
               </li>
               <li className="text-muted-foreground">
                 Phone: +91 8126040011, +91 8171254458
@@ -85,7 +85,7 @@ export default function Footer() {
                 <Linkedin className="h-5 w-5" />
               </a>
               <a
-                href="https://www.instagram.com/socialflymediaa"
+                href="https://www.instagram.com/socialflynetworks/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-foreground transition-colors"

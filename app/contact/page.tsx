@@ -42,7 +42,7 @@ export default function ContactPage() {
             </div>
             <div>
               <h3 className="text-lg font-semibold mb-2">Email</h3>
-              <p className="text-muted-foreground">socialflymedia2024@gmail.com</p>
+              <p className="text-muted-foreground">socialflynetworks@gmail.com</p>
             </div>
           </div>
           
@@ -62,10 +62,10 @@ export default function ContactPage() {
               <MapPin className="h-6 w-6 text-primary" />
             </div>
             <div>
-              <h3 className="text-lg font-semibold mb-2">Social Media</h3>
+              <h3 className="text-lg font-semibold mb-2">Social Networks</h3>
               <div className="text-muted-foreground flex space-x-3">
                 <a href="https://www.linkedin.com/company/social-flymedia/" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">LinkedIn</a>
-                <a href="https://www.instagram.com/socialflymediaa" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">Instagram</a>
+                <a href="https://www.instagram.com/socialflynetworks/" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">Instagram</a>
               </div>
             </div>
           </div>

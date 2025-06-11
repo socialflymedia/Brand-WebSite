@@ -13,9 +13,14 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "SocialFly AI - AI-Powered SaaS Solutions",
-  description: "Leverage cutting-edge AI to streamline operations, unlock actionable insights, and drive exponential growth with our SaaS platforms and analytics tools.",
+  title: "Website, App & SaaS Development | Social Media & Google/Meta Business Setup - SocialFly Networks",
+  description:
+    "Boost your business with custom website & mobile app development, SaaS platforms, ecommerce solutions, social media marketing & management, Instagram ad optimization, Google Business Profile & Meta Ads setup.",
+  icons: {
+    icon: '/favicon1.png',
+  },
 };
+
 
 export default function RootLayout({
   children,

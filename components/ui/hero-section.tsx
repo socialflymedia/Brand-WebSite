@@ -72,7 +72,7 @@ export default function HeroSection() {
                 className="absolute w-1 h-1 rounded-full bg-blue-400/40 dark:bg-white/40"
                 style={{
                   left: `${20 + i * 15}%`,
-                  top: `${50 + (i % 3) * 10}%`
+                  top: `${0 + (i % 3) * 10}%`
                 }}
                 animate={{
                   y: [0, -40, 0],
