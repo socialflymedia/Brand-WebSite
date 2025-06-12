@@ -13,16 +13,22 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "SocialFly Networks",
-  description: "Website, App & SaaS Development | Social Media & Google/Meta Business Setup - SocialFly Networks",
+  title: "SocialFly Networks | Website, App & SaaS Development | Social Media & Google/Meta Business Setup",
+  description:
+    "Boost your business with custom website & mobile app development, SaaS platforms, ecommerce solutions, social media marketing & management, Instagram ad optimization, Google Business Profile & Meta Ads setup.",
   icons: {
     icon: [
       { rel: 'icon', url: '/favicon.ico' },
-      { rel: 'shortcut icon', url: '/favicon.ico' },
-      { rel: 'apple-touch-icon', url: '/favicon.ico' },
+      { rel: 'icon', type: 'image/png', sizes: '32x32', url: '/favicon-32x32.png' },
+      { rel: 'icon', type: 'image/png', sizes: '16x16', url: '/favicon-16x16.png' },
+      { rel: 'apple-touch-icon', url: '/apple-touch-icon.png' },
     ],
-  },
+    other: [
+      { rel: 'manifest', url: '/site.webmanifest' }
+    ]
+  }
 };
+
 
 
 
