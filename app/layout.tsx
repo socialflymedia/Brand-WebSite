@@ -13,13 +13,17 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Website, App & SaaS Development | Social Media & Google/Meta Business Setup - SocialFly Networks",
-  description:
-    "Boost your business with custom website & mobile app development, SaaS platforms, ecommerce solutions, social media marketing & management, Instagram ad optimization, Google Business Profile & Meta Ads setup.",
+  title: "SocialFly Networks",
+  description: "Website, App & SaaS Development | Social Media & Google/Meta Business Setup - SocialFly Networks",
   icons: {
-    icon: '/favicon1.ico',
+    icon: [
+      { rel: 'icon', url: '/favicon1.ico' },
+      { rel: 'shortcut icon', url: '/favicon1.ico' },
+      { rel: 'apple-touch-icon', url: '/favicon1.ico' },
+    ],
   },
 };
+
 
 
 export default function RootLayout({
@@ -29,11 +33,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-       <head>
+       {/* <head>
   
         <link rel="icon" href="/favicon1.ico" />
         <link rel="apple-touch-icon" href="/favicon1.ico" />
-      </head>
+      </head> */}
       <body className={`${inter.variable} ${poppins.variable} font-sans`}>
         <ThemeProvider
           attribute="class"
