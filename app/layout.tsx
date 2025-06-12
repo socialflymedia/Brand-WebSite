@@ -17,9 +17,9 @@ export const metadata: Metadata = {
   description: "Website, App & SaaS Development | Social Media & Google/Meta Business Setup - SocialFly Networks",
   icons: {
     icon: [
-      { rel: 'icon', url: '/favicon1.ico' },
-      { rel: 'shortcut icon', url: '/favicon1.ico' },
-      { rel: 'apple-touch-icon', url: '/favicon1.ico' },
+      { rel: 'icon', url: '/favicon.ico' },
+      { rel: 'shortcut icon', url: '/favicon.ico' },
+      { rel: 'apple-touch-icon', url: '/favicon.ico' },
     ],
   },
 };
