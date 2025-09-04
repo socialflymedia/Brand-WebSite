@@ -4,7 +4,7 @@ import { Inter, Poppins } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
-
+import { Analytics } from '@vercel/analytics/next';
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const poppins = Poppins({ 
   weight: ["300", "400", "500", "600", "700"],
@@ -29,7 +29,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+  
+        <link rel="icon" href="/favicon1.ico" />
+        <link rel="apple-touch-icon" href="/favicon1.ico" />
+      </head>
       <body className={`${inter.variable} ${poppins.variable} font-sans`}>
+             <Analytics />
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
