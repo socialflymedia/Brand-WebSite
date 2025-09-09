@@ -6,12 +6,15 @@ import { gsap } from "gsap";
 export interface ChromaItem {
   image: string;
   title: string;
-  subtitle: string;
+  // make subtitle optional to match Home's Item type
+  subtitle?: string;
   handle?: string;
   location?: string;
   borderColor?: string;
   gradient?: string;
   url?: string;
+  // allow quotes as well (optional)
+  quote?: string;
 }
 
 export interface ChromaGridProps {
@@ -23,7 +26,6 @@ export interface ChromaGridProps {
   ease?: string;
   showCards?: boolean;
 }
-
 // The ref methods we expose
 export type ChromaGridHandle = {
   setPointer: (x: number, y: number) => void;

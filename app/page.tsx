@@ -1,13 +1,28 @@
+// "use client" must be the very first token in a client component file
+"use client";
+
+import React from "react";
 import HeroSection from "@/components/ui/hero-section";
 import ServicesSection from "@/components/ui/services-section";
 import ProductsSection from "@/components/ui/products-section";
 import TestimonialsSection from "@/components/ui/testimonials-section";
-import ContactSection from "@/components/ui/contact-section"
+import ContactSection from "@/components/ui/contact-section";
 import Technologies from "@/components/ui/tech-stack-strip";
 import AboutSection from "@/components/ui/AboutUsSection";
 import ChromaGrid from "@/components/ChromaGrid";
 
-const items = [
+type Item = {
+  image: string;
+  title: string;
+  subtitle?: string;
+  handle?: string;
+  borderColor?: string;
+  gradient?: string;
+  url?: string;
+  quote?: string;
+};
+
+const items: Item[] = [
   {
     image: "https://i.pravatar.cc/300?img=1",
     title: "Sarah Johnson",
@@ -16,7 +31,7 @@ const items = [
     borderColor: "#3B82F6",
     gradient: "linear-gradient(145deg, #3B82F6, #000)",
     url: "https://github.com/sarahjohnson",
-    quote: "Working with this product accelerated our front-end delivery by weeks."
+    quote: "Working with this product accelerated our front-end delivery by weeks.",
   },
   {
     image: "https://i.pravatar.cc/300?img=2",
@@ -26,12 +41,12 @@ const items = [
     borderColor: "#10B981",
     gradient: "linear-gradient(180deg, #10B981, #000)",
     url: "https://linkedin.com/in/mikechen",
-    quote: "Backend robustness improved and our deployments became predictable."
+    quote: "Backend robustness improved and our deployments became predictable.",
   },
   // add more items...
 ];
 
-export default function Home() {
+export default function Home(): JSX.Element {
   return (
     <>
       <HeroSection />
