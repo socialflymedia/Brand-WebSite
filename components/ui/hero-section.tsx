@@ -4,132 +4,165 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { fadeIn, textVariant } from "@/lib/animations";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { ArrowRight, Play, Sparkles } from "lucide-react";
 
 export default function HeroSection() {
+  const [mounted, setMounted] = useState(false);
+  
+  useEffect(() => setMounted(true), []);
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { y: 60, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.8,
+        ease: [0.22, 1, 0.36, 1],
+      },
+    },
+  };
+
   return (
-    <section className="relative h-screen flex items-center overflow-hidden">
-      {/* Background with gradient overlay */}
-      {/* <div className="absolute inset-0 dark:bg-gradient-to-b dark:from-background/20 dark:via-background/80 dark:to-background bg-background"></div> */}
-
-      {/* Content */}
-      <div className="container relative z-10 text-center">
-        <motion.h1
-          variants={textVariant(0.1)}
-          initial="hidden"
-          animate="visible"
-          className="text-4xl md:text-5xl lg:text-6xl font-thin mb-6 px-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400"
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Video Background with Proper Overlays */}
+      <div className="absolute inset-0 z-0">
+        {/* Video Element */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
         >
-          AI-Powered SaaS Solutions for Your Business
-        </motion.h1>
+          <source src="/hero-video.mp4" type="video/mp4" />
+          <source src="/hero-video.webm" type="video/webm" />
+          Your browser does not support the video tag.
+        </video>
         
-        <motion.div
-          variants={fadeIn("up", 0.2)}
-          initial="hidden"
-          animate="visible"
-          className="relative mb-12 max-w-2xl mx-auto text-center"
-        >
-          {/* Subtle glow behind subtext */}
-          <div className="absolute inset-0 pointer-events-none -translate-y-1/4 blur-3xl">
-  <div
-    className="w-full h-full rounded-full"
-    style={{
-      background: "radial-gradient(circle at center, rgba(59,130,246,0.08), rgba(59,130,246,0.01), transparent 80%)",
-      maskImage: "radial-gradient(circle at center, black 60%, transparent 100%)",
-      WebkitMaskImage: "radial-gradient(circle at center, black 60%, transparent 100%)",
-    }}
-  />
-</div>
+        {/* Primary Dark Overlay */}
+        <div className="absolute inset-0 bg-black/60"></div>
+        
+        {/* Gradient Overlay for Depth */}
+        <div className="absolute inset-0 bg-gradient-to-br from-black/40 via-transparent to-black/60"></div>
+        
+        {/* Brand Color Accents */}
+        <div className="absolute inset-0 bg-gradient-to-r from-orange-500/10 via-transparent to-cyan-500/10"></div>
+        
+        {/* Radial Gradient for Focus */}
+        <div className="absolute inset-0 bg-radial-gradient from-transparent via-transparent to-black/40"></div>
+      </div>
 
-          {/* Animated line above text */}
-          <motion.div 
-            className="h-px w-24 mx-auto mb-6 bg-gradient-to-r from-transparent via-blue-400/50 to-transparent dark:via-blue-700/50 dark:from-transparent dark:to-transparent"
-            animate={{ width: ["0%", "40%", "30%"] }}
-            transition={{ duration: 3, repeat: Infinity, repeatType: "reverse" }}
-          ></motion.div>
-          
-          {/* Enhanced Subtext */}
-          <motion.p
-            variants={fadeIn("up", 0.3)}
-            initial="hidden"
-            animate="visible"
-            className="text-lg md:text-xl font-light tracking-wider leading-relaxed"
-          >
-            <span
-              className="bg-clip-text text-transparent bg-gradient-to-r from-blue-700 via-purple-600 to-blue-600 dark:from-blue-300 dark:via-purple-300 dark:to-blue-300 drop-shadow-sm"
-            >
-              Building Tomorrow's Brands with Today's Technology.
-            </span>
-          </motion.p>
-          
-          {/* Enhanced funnel effect */}
-          {/* <div className="absolute inset-x-0 -bottom-8 h-24 bg-gradient-to-t from-white via-gray-200/10 to-transparent dark:from-background dark:via-gray-800/10 dark:to-transparent rounded-t-full opacity-70"></div>
-           */}
-          {/* Animated particles */}
-          <div className="absolute inset-0 overflow-hidden">
-            {[...Array(5)].map((_, i) => (
+      {/* Animated Background Elements */}
+      <div className="absolute inset-0 z-10 pointer-events-none">
+        {mounted && (
+          <>
+            {/* Floating Particles */}
+            {[...Array(6)].map((_, i) => (
               <motion.div
                 key={i}
-                className="absolute w-1 h-1 rounded-full bg-blue-400/40 dark:bg-white/40"
+                className="absolute w-2 h-2 bg-orange-400/30 rounded-full"
                 style={{
-                  left: `${20 + i * 15}%`,
-                  top: `${0 + (i % 3) * 10}%`
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
                 }}
                 animate={{
-                  y: [0, -40, 0],
-                  opacity: [0, 1, 0]
+                  y: [-20, -100, -20],
+                  opacity: [0, 1, 0],
+                  scale: [0.5, 1, 0.5],
                 }}
                 transition={{
-                  duration: 2 + i,
+                  duration: 4 + Math.random() * 2,
                   repeat: Infinity,
-                  delay: i * 0.5
+                  delay: Math.random() * 2,
                 }}
               />
             ))}
-          </div>
-        </motion.div>
-        
+            
+            {/* Gradient Orbs */}
+            <motion.div
+              className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-orange-500/20 to-cyan-500/20 rounded-full blur-3xl"
+              animate={{
+                scale: [1, 1.2, 1],
+                opacity: [0.3, 0.5, 0.3],
+              }}
+              transition={{
+                duration: 8,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+            
+            <motion.div
+              className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-gradient-to-r from-cyan-500/20 to-orange-500/20 rounded-full blur-3xl"
+              animate={{
+                scale: [1.2, 1, 1.2],
+                opacity: [0.5, 0.3, 0.5],
+              }}
+              transition={{
+                duration: 6,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+          </>
+        )}
+      </div>
+
+      {/* Main Content */}
+      <div className="relative z-20 container mx-auto px-6 text-center mt-48">
         <motion.div
-          variants={fadeIn("up", 0.5)}
+          variants={containerVariants}
           initial="hidden"
           animate="visible"
+          className="max-w-5xl mx-auto"
         >
-          <Link target="_blank" href="https://app.youform.com/forms/hiv3vogo">
-            <Button
-  size="lg"
-  className="bg-white/10 backdrop-blur-md border border-white/20 text-black dark:text-white border-blue-500 hover:bg-white-200/20 hover:border-blue-500/30 rounded-l shadow-md"
->
-  Get Started
-</Button>
-          </Link>
+          
+
+          {/* Main Headline */}
+          <motion.h1
+            variants={itemVariants}
+            className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-0 leading-tight"
+          >
+            <span className="bg-gradient-to-r from-white via-orange-200 to-white bg-clip-text text-transparent">
+              AI-Powered SaaS Solutions
+            </span>
+            <br />
+            <span className="text-orange-400">for Ambitious Teams</span>
+          </motion.h1>
+
+          {/* Subtitle */}
+          <motion.div variants={itemVariants} className="mb-10">
+            <div className="inline-block p-6 rounded-2xl">
+              <p className="text-lg md:text-xl text-gray-200 max-w-3xl leading-relaxed">
+                Build faster, convert better, and scale with{" "}
+                <span className="text-cyan-400 font-semibold">data-driven automations</span>{" "}
+                — all in one elegant platform designed for growth.
+              </p>
+            </div>
+          </motion.div>
+
+          
         </motion.div>
       </div>
-      
-      {/* Animated shapes - visible in both light and dark modes */}
-      <div className="absolute inset-0 pointer-events-none">
-      <motion.div
-  className="absolute top-1/4 left-[-20%] w-72 h-72 rounded-full bg-gradient-to-r from-blue-500/30 to-purple-500/30 blur-3xl opacity-50"
-  initial={{ x: 0, opacity: 0 }}
-  animate={{ x: "140vw", opacity: [0, 0.6, 0] }}
-  transition={{
-    duration: 5,
-    repeat: Infinity,
-    ease: "easeInOut"
-  }}
-/>
 
-        <motion.div
-          className="absolute bottom-1/3 right-1/5 w-72 h-72 rounded-full bg-gradient-to-r from-blue-400/20 to-purple-400/20 bg-indigo-500/10 blur-3xl"
-          animate={{
-            x: [0, 70, 0],
-            y: [0, 30, 0],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        ></motion.div>
-      </div>
+      {/* Bottom Gradient Fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black/50 to-transparent z-15"></div>
+      
+      {/* Scroll Indicator */}
+     
     </section>
   );
 }
