@@ -1,3 +1,4 @@
+// components/layout/header.tsx
 "use client";
 
 import React, { useEffect, useState, useCallback, memo } from "react";
@@ -7,8 +8,6 @@ import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Menu, X, ChevronRight, ArrowRight, Globe, Code, Megaphone, Palette } from "lucide-react";
-import ThemeToggle from "@/components/theme-toggle";
-import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
 import {
   NavigationMenu,
@@ -60,31 +59,46 @@ const NAVIGATION_DATA: NavSection[] = [
     width: "w-[520px]",
     columns: "grid-cols-1",
     items: [
-      { 
-        title: "Web Development", 
+      {
+        title: "Web Development",
         href: "/services/web-development",
         desc: "Modern, fast, and scalable web solutions",
         icon: serviceIcons.web
       },
-      { 
-        title: "App Development", 
+      {
+        title: "App Development",
         href: "/services/app-development",
         desc: "Native and cross-platform mobile apps",
         icon: serviceIcons.app
       },
-      { 
-        title: "Digital Marketing", 
+      {
+        title: "Digital Marketing",
         href: "/services/digital-marketing",
         desc: "Data-driven growth strategies",
         icon: serviceIcons.marketing
       },
-      { 
-        title: "UI/UX Design", 
-        href: "/services/ui-ux",
+      {
+        title: "UI/UX Design",
+        href: "/services/ui-ux-design",
         desc: "Beautiful, intuitive user experiences",
         icon: serviceIcons.design,
         badge: "Popular"
       },
+      {
+        title: "Google Business Setup",
+        href: "/services/google-business-setup",
+        desc: "Improve local visibility & GMB optimization"
+      },
+      {
+        title: "Meta Ads Management",
+        href: "/services/meta-ads-management",
+        desc: "Creative + data-driven Meta campaigns"
+      },
+      {
+        title: "Ecommerce Solutions",
+        href: "/services/ecommerce-solutions",
+        desc: "Headless commerce, checkout & scaling"
+      }
     ],
   },
   {
@@ -102,17 +116,7 @@ const NAVIGATION_DATA: NavSection[] = [
         title: "Sales CRM",
         href: "/products/crm",
         desc: "Streamline your sales pipeline"
-      },
-      {
-        title: "Sites",
-        href: "/products/sites",
-        desc: "Lightning-fast website builder"
-      },
-      {
-        title: "Studio",
-        href: "/products/studio",
-        desc: "Creative production suite"
-      },
+      },    
     ],
   },
   {
@@ -120,18 +124,17 @@ const NAVIGATION_DATA: NavSection[] = [
     width: "w-[560px]",
     columns: "grid-cols-2",
     items: [
-      { title: "Case Studies", href: "/case-studies" },
-      { title: "Guides", href: "/guides" },
-      { title: "Documentation", href: "/docs" },
-      { title: "Changelog", href: "/changelog", badge: "Updated" },
-      { title: "Blog", href: "/blog" },
-      { title: "Community", href: "/community" },
+      { title: "Case Studies", href: "/resources/case-studies" },
+      { title: "Guides", href: "/resources/guides" },
+      { title: "Documentation", href: "/resources/documentation" },
+      { title: "Changelog", href: "/resources/changelog", badge: "Updated" },
+      { title: "Community", href: "/resources/community" },
     ],
   },
 ];
 
 const STATIC_LINKS: NavItem[] = [
-  { title: "Pricing", href: "/pricing" },
+  { title: "Contact Us", href: "/contact" },
   { title: "About", href: "/about" },
 ];
 
@@ -141,7 +144,7 @@ const useScrolled = (threshold: number = SCROLL_THRESHOLD) => {
 
   useEffect(() => {
     let ticking = false;
-    
+
     const handleScroll = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
@@ -151,10 +154,10 @@ const useScrolled = (threshold: number = SCROLL_THRESHOLD) => {
         ticking = true;
       }
     };
-    
+
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
-    
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, [threshold]);
 
@@ -163,8 +166,8 @@ const useScrolled = (threshold: number = SCROLL_THRESHOLD) => {
 
 // Simple Logo without animations
 const Logo = memo<{ mounted: boolean }>(({ mounted }) => (
-  <Link 
-    href="/" 
+  <Link
+    href="/"
     className="flex items-center gap-2.5 md:gap-3 group"
     aria-label="SocialFly Networks Home"
   >
@@ -205,10 +208,10 @@ const NavMenuItem = memo<{
   pathname: string;
 }>(({ section, pathname }) => {
   const isActive = section.items.some(item => pathname.startsWith(item.href));
-  
+
   return (
     <NavigationMenuItem>
-      <NavigationMenuTrigger 
+      <NavigationMenuTrigger
         className={cn(
           "px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200",
           "hover:bg-white/10 dark:hover:bg-gray-800/30",
@@ -218,8 +221,8 @@ const NavMenuItem = memo<{
       >
         {section.title}
       </NavigationMenuTrigger>
-      
-      <NavigationMenuContent 
+
+      <NavigationMenuContent
         className={cn(
           "min-w-[400px]",
           section.width
@@ -310,13 +313,26 @@ const DesktopNavigation = memo<{ pathname: string }>(({ pathname }) => (
         {NAVIGATION_DATA.map((section) => (
           <NavMenuItem key={section.title} section={section} pathname={pathname} />
         ))}
+
+        {/* Blog as a top-level item */}
+        <NavigationMenuItem>
+          <Link
+            href="/blog"
+            className={cn(
+              "px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 inline-block",
+              "hover:bg-white/10 dark:hover:bg-gray-800/30",
+              pathname === "/blog" ? "text-orange-500 dark:text-orange-400 bg-white/10 dark:bg-gray-800/30" : ""
+            )}
+          >
+            Blog
+          </Link>
+        </NavigationMenuItem>
+
         <StaticNavLinks pathname={pathname} />
       </NavigationMenuList>
     </NavigationMenu>
 
     <div className="flex items-center gap-3 ml-auto">
-      <ThemeToggle />
-      
       <Button
         className="group px-5 py-2 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white rounded-lg font-medium shadow-md hover:shadow-lg transition-all duration-300"
         asChild
@@ -333,13 +349,12 @@ const DesktopNavigation = memo<{ pathname: string }>(({ pathname }) => (
 ));
 DesktopNavigation.displayName = 'DesktopNavigation';
 
-// Mobile Toggle
+// Mobile Toggle (removed theme toggle)
 const MobileToggle = memo<{
   isOpen: boolean;
   onToggle: () => void;
 }>(({ isOpen, onToggle }) => (
   <div className="md:hidden flex items-center gap-2">
-    <ThemeToggle />
     <button
       onClick={onToggle}
       className="p-2 rounded-lg hover:bg-white/10 dark:hover:bg-gray-800/30 transition-colors"
@@ -416,24 +431,24 @@ const MobileNavigation = memo<{ isOpen: boolean; pathname: string }>(({ isOpen, 
               About
             </Link>
             <Link
-              href="/pricing"
+              href="/contact"
               className={cn(
                 "p-3 rounded-lg text-center text-sm font-medium transition-all",
                 "bg-white/5 dark:bg-gray-800/30 backdrop-blur-sm",
                 "hover:bg-white/10 dark:hover:bg-gray-700/30",
-                pathname === "/pricing" && "bg-orange-500/10 text-orange-500"
+                pathname === "/contact" && "bg-orange-500/10 text-orange-500"
               )}
             >
-              Pricing
+              Contact Us
             </Link>
           </div>
 
           {/* Accordion Menu */}
           <Accordion type="single" collapsible className="space-y-2">
             {NAVIGATION_DATA.map((section) => (
-              <MobileAccordionItem 
-                key={section.title} 
-                section={section} 
+              <MobileAccordionItem
+                key={section.title}
+                section={section}
                 pathname={pathname}
               />
             ))}
@@ -478,7 +493,6 @@ MobileNavigation.displayName = 'MobileNavigation';
 // Main Header Component
 export default function Header() {
   const pathname = usePathname();
-  const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const scrolled = useScrolled();
@@ -514,22 +528,21 @@ export default function Header() {
         <div className="mx-auto w-[95%] max-w-[1400px] px-0 sm:px-2">
           <div className={cn(
             "relative rounded-2xl transition-all duration-500",
-            // Glass effect with better backdrop blur
-            scrolled 
-              ? "bg-white/70 dark:bg-gray-900/70 backdrop-blur-2xl shadow-xl" 
+            scrolled
+              ? "bg-white/70 dark:bg-gray-900/70 backdrop-blur-2xl shadow-xl"
               : "bg-white/60 dark:bg-gray-900/60 backdrop-blur-xl shadow-lg",
             "border border-white/20 dark:border-gray-700/20"
           )}>
             {/* Subtle gradient overlay */}
             <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-orange-500/5 via-transparent to-pink-500/5 pointer-events-none" />
-            
+
             <div className="relative px-4 py-3 sm:px-6 md:px-8">
               <div className="flex items-center justify-between gap-4">
                 <Logo mounted={mounted} />
                 <DesktopNavigation pathname={pathname} />
                 <MobileToggle isOpen={isOpen} onToggle={handleToggleMenu} />
               </div>
-              
+
               <MobileNavigation isOpen={isOpen} pathname={pathname} />
             </div>
           </div>

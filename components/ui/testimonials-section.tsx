@@ -243,10 +243,7 @@ export default function TestimonialsSection({
           </div>
         </div>
 
-        {/* Allow parent to inject chroma grid (from Home) */}
-        {ChromaGridComponent && <div className="mt-10 w-full h-[420px] relative overflow-hidden">{ChromaGridComponent}</div>}
-
-        <div className="mt-20 text-center">
+             <div className="mt-20 text-center">
           <div className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-orange-600 to-red-600 text-white font-semibold hover:from-orange-700 hover:to-red-700 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-orange-500/25 cursor-pointer">
             <span>Join Our Happy Customers</span>
             <ChevronRight className="w-5 h-5" />

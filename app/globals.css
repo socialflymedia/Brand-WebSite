@@ -2,10 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+/* -------------------------
+   Color tokens (kept original)
+   ------------------------- */
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+
+  /* brand accent (used across pages) */
+  --brand-orange-rgb: 249, 115, 22; /* tailwind orange-500 */
+  --brand-orange: rgb(var(--brand-orange-rgb));
 }
 
 @media (prefers-color-scheme: dark) {
@@ -16,6 +23,9 @@
   }
 }
 
+/* -------------------------
+   Tailwind base overrides
+   ------------------------- */
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -96,42 +106,113 @@
   @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400;
 }
 
-/* Animation Utilities */
-@keyframes float {
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
-}
+/* -------------------------
+   Animations & Motion utils
+   (kept CSS-only for server pages)
+   ------------------------- */
 
+/* floating animation used in multiple places */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
 .animate-float {
   animation: float 6s ease-in-out infinite;
 }
 
-/* Scroll Behavior */
-html {
-  scroll-behavior: smooth;
+/* UX blob (used on UI/UX page) */
+@keyframes ux-blob {
+  0% { transform: translateY(0) rotate(0deg) scale(1); }
+  50% { transform: translateY(-18px) rotate(6deg) scale(1.03); }
+  100% { transform: translateY(0) rotate(0deg) scale(1); }
+}
+.animate-ux-blob {
+  animation: ux-blob 8s ease-in-out infinite;
+  transform-origin: center;
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 10px;
+/* small helper for animation delay used in markup */
+.animation-delay-2000 { animation-delay: 2s; }
+
+/* subtle hover lift helper you can use on elements
+   prefer using Tailwind utilities, but provided for consistency */
+.hover-lift {
+  transition: transform .35s cubic-bezier(.2,.9,.3,1);
+}
+.hover-lift:hover { transform: translateY(-6px); }
+
+/* Respect reduced motion user preference */
+@media (prefers-reduced-motion: reduce) {
+  .animate-float,
+  .animate-ux-blob,
+  .hover-lift,
+  .animate-float,
+  .animation-delay-2000 {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  /* Also silence any escaped class names (Tailwind-style) referenced in markup */
+  .group-hover\:scale-\[1\.02\],
+  .hover\:translate-y-\[-6px\] {
+    animation: none !important;
+    transition: none !important;
+  }
 }
 
-::-webkit-scrollbar-track {
-  background: hsl(var(--background));
-}
+/* -------------------------
+   Utility classes
+   ------------------------- */
 
+/* a small helper used in Services carousel to hide scrollbars */
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Custom scrollbar look (desktop nicely themed) */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: hsl(var(--background)); }
 ::-webkit-scrollbar-thumb {
-  background: hsl(var(--muted-foreground) / 0.3);
-  border-radius: 5px;
+  background: hsla(var(--muted-foreground), 0.25);
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover { background: hsla(var(--muted-foreground), 0.45); }
+
+/* Focus visible (keyboard navigation) to improve accessibility */
+:focus { outline: none; }
+:focus-visible {
+  outline: 3px solid rgba(var(--brand-orange-rgb), 0.18);
+  outline-offset: 3px;
+  border-radius: 6px;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--muted-foreground) / 0.5);
+/* Small helper for subtle blurred card backgrounds */
+.card-blur {
+  background: rgba(0,0,0,0.42);
+  backdrop-filter: blur(6px);
 }
+
+/* Utility for small uppercase tags used in cards */
+.tag-xs {
+  font-size: 0.6875rem;
+  padding: 4px 8px;
+  border-radius: 9999px;
+}
+
+/* Ensure images inside hero/device slots preserve important focal area */
+.hero-image {
+  object-fit: cover;
+  object-position: 50% 35%;
+}
+
+/* small helper to center absolutely-positioned SVG accents */
+.svg-accent {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  will-change: transform, opacity;
+}
+
+/* -------------------------
+   End of global styles
+   ------------------------- */

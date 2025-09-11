@@ -1,83 +1,162 @@
+// app/layout.tsx (server component) — Local SEO tuned for Mawana, Meerut
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter, Poppins } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
-import { Analytics } from '@vercel/analytics/next';
+import { Analytics } from "@vercel/analytics/next";
+
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const poppins = Poppins({ 
+const poppins = Poppins({
   weight: ["300", "400", "500", "600", "700"],
   subsets: ["latin"],
   variable: "--font-poppins",
 });
 
+const SITE_URL = "https://socialflynetworks.com";
+const OG_IMAGE = `${SITE_URL}/SFN_black_transparent_logo.png`;
+const LOGO = `${SITE_URL}/logosfn.png`;
+
+// Replace with accurate coordinates for your Mawana office if available
+const GEO_LAT = 29.0350; // example: Meerut / Mawana area latitude
+const GEO_LON = 77.7080; // example longitude
+
 export const metadata: Metadata = {
-  title: "SocialFly Networks | Website, App & SaaS Development | Social Media & Google/Meta Business Setup",
+  title:
+    "SocialFly Networks | Mawana, Meerut — Website, App & Digital Marketing",
   description:
-    "Boost your business with custom website & mobile app development, SaaS platforms, ecommerce solutions, social media marketing & management, Instagram ad optimization, Google Business Profile & Meta Ads setup.",
-     keywords: [
-    "website development in Meerut",
-    "app development Noida",
-    "ecommerce Mawana",
-    "SaaS platforms NCR",
-    "digital marketing Meerut",
-    "Google Business setup Noida",
-    "Meta Ads management NCR",
-    "Social media marketing Meerut",
-    "SocialFly Networks"
+    "SocialFly Networks (Mawana, Meerut): website & mobile app development, SaaS, ecommerce, and local digital marketing services — Google Business & Meta Ads setup for Meerut/NCR businesses.",
+  keywords: [
+    "website development Mawana",
+    "app development Meerut",
+    "digital marketing Mawana Meerut",
+    "SEO Meerut",
+    "Google Business Profile Meerut",
+    "Meta Ads Mawana",
+    "SocialFly Networks Mawana",
+    "web development near me",
   ],
-  metadataBase: new URL("https://socialflynetworks.com"),
-   alternates: {
-    canonical: "https://socialflynetworks.com",
-  },
+  metadataBase: new URL(SITE_URL),
+  alternates: { canonical: SITE_URL },
   openGraph: {
-    title: "SocialFly Networks | App & Web Development in Meerut, Mawana, Noida, NCR",
+    title: "SocialFly Networks — Mawana & Meerut Web/App Development",
     description:
-      "We provide powerful digital solutions including website & app development, SaaS products, digital marketing & business setup in Meerut, Noida, Mawana, and NCR.",
-    url: "https://socialflynetworks.com",
+      "Local digital agency in Mawana (Meerut): websites, mobile apps, SaaS & marketing to help local businesses grow online.",
+    url: SITE_URL,
     siteName: "SocialFly Networks",
     images: [
       {
-        url: "/SFN_black_transparent_logo.png", // Replace with your actual image
+        url: OG_IMAGE,
         width: 1200,
         height: 630,
-        alt: "SocialFly Networks - Web & App Development Agency",
+        alt: "SocialFly Networks - Mawana, Meerut Digital Agency",
       },
     ],
     locale: "en_IN",
     type: "website",
   },
-    icons: {
+  robots: { index: true, follow: true },
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0b1220" },
+  ],
+  icons: {
     icon: [
-      { rel: 'icon', url: '/favicon.ico' },
-      { rel: 'icon', type: 'image/png', sizes: '32x32', url: '/favicon-32x32.png' },
-      { rel: 'icon', type: 'image/png', sizes: '16x16', url: '/favicon-16x16.png' },
-      { rel: 'apple-touch-icon', url: '/apple-touch-icon.png' },
+      { rel: "icon", url: "/favicon.ico" },
+      { rel: "apple-touch-icon", url: "/apple-touch-icon.png" },
     ],
-    other: [
-      { rel: 'manifest', url: '/site.webmanifest' }
-    ]
-  }
+    other: [{ rel: "manifest", url: "/site.webmanifest" }],
+  },
 };
 
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const localLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": `${SITE_URL}#organization`,
+        name: "SocialFly Networks",
+        url: SITE_URL,
+        logo: LOGO,
+        sameAs: [
+          "https://www.instagram.com/socialflynetworks",
+          "https://www.linkedin.com/company/socialflynetworks",
+        ],
+      },
+      {
+        "@type": "WebSite",
+        "@id": `${SITE_URL}#website`,
+        url: SITE_URL,
+        name: "SocialFly Networks",
+        publisher: { "@id": `${SITE_URL}#organization` },
+        potentialAction: {
+          "@type": "SearchAction",
+          target: `${SITE_URL}/search?q={search_term_string}`,
+          "query-input": "required name=search_term_string",
+        },
+      },
+      {
+        "@type": "LocalBusiness",
+        "@id": `${SITE_URL}#localbusiness`,
+        name: "SocialFly Networks",
+        image: LOGO,
+        url: SITE_URL,
+        telephone: "+91-8126040011",
+        priceRange: "₹₹",
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: "Mawana Road",
+          addressLocality: "Mawana",
+          addressRegion: "Uttar Pradesh",
+          postalCode: "250401",
+          addressCountry: "IN",
+        },
+        geo: {
+          "@type": "GeoCoordinates",
+          latitude: GEO_LAT,
+          longitude: GEO_LON,
+        },
+        hasMap: `https://www.google.com/maps/search/?api=1&query=${GEO_LAT},${GEO_LON}`,
+        openingHoursSpecification: [
+          {
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday"
+            ],
+            opens: "10:00",
+            closes: "18:00"
+          }
+        ],
+        areaServed: ["Mawana", "Meerut", "Noida", "NCR"],
+        sameAs: [
+          "https://www.instagram.com/socialflynetworks",
+          "https://www.linkedin.com/company/socialflynetworks",
+        ],
+        aggregateRating: {
+          "@type": "AggregateRating",
+          ratingValue: "4.9",
+          reviewCount: "18"
+        }
+      }
+    ]
+  };
 
-
-
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-  
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
         <link rel="icon" href="/favicon1.ico" />
-        <link rel="apple-touch-icon" href="/favicon1.ico" />
       </head>
+
       <body className={`${inter.variable} ${poppins.variable} font-sans`}>
-             <Analytics />
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
@@ -89,39 +168,9 @@ export default function RootLayout({
             <main className="flex-1">{children}</main>
             <Footer />
           </div>
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify({
-                "@context": "https://schema.org",
-                "@type": "LocalBusiness",
-                name: "SocialFly Networks",
-                image: "https://socialflynetworks.com/logosfn.png", // Replace with your logo
-                "@id": "https://socialflynetworks.com",
-                url: "https://socialflynetworks.com",
-                telephone: "+91-8126040011", // Replace with your number
-                address: {
-                  "@type": "PostalAddress",
-                  streetAddress: "Mawana Road",
-                  addressLocality: "Meerut",
-                  addressRegion: "Uttar Pradesh",
-                  postalCode: "250401",
-                  addressCountry: "IN",
-                },
-                sameAs: [
-                  "https://www.instagram.com/socialflynetworks",
-                  "https://www.linkedin.com/company/socialflynetworks"
-                ],
-                openingHours: "Mo-Fr 10:00-18:00",
-                areaServed: [
-                  { "@type": "Place", name: "Meerut" },
-                  { "@type": "Place", name: "Mawana" },
-                  { "@type": "Place", name: "Noida" },
-                  { "@type": "Place", name: "NCR" }
-                ],
-              }),
-            }}
-          />
+
+          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localLd) }} />
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>
