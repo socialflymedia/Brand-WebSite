@@ -7,6 +7,13 @@ const config: Config = {
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  safelist: [
+  {
+    pattern: /(bg|text|border|from|to)-(red|orange|yellow|green|blue|indigo|purple|pink|gray)-(100|200|300|400|500|600|700|800|900)/,
+    variants: ["hover", "dark"],
+  },
+],
+
   theme: {
     container: {
       center: true,

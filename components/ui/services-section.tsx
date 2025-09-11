@@ -1,64 +1,3 @@
-// "use client";
-
-// import { services } from "@/lib/constants";
-// import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-// import { motion } from "framer-motion";
-// import { staggerContainer, fadeIn } from "@/lib/animations";
-
-// export default function ServicesSection() {
-//   return (
-//     <section className="py-20 bg-background">
-//       <div className="container">
-//         <motion.div
-//           initial="hidden"
-//           whileInView="visible"
-//           viewport={{ once: true, amount: 0.25 }}
-//           className="text-center mb-16"
-//         >
-//           <motion.h2 
-//             variants={fadeIn("up", 0.1)}
-//             className="text-3xl md:text-4xl font-bold gradient-text mb-4"
-//           >
-//             Our AI-Driven Services
-//           </motion.h2>
-//           <motion.p
-//             variants={fadeIn("up", 0.2)} 
-//             className="text-lg text-muted-foreground max-w-2xl mx-auto"
-//           >
-//             Comprehensive solutions powered by artificial intelligence
-//           </motion.p>
-//         </motion.div>
-
-//         <motion.div
-//           variants={staggerContainer(0.1, 0.2)}
-//           initial="hidden"
-//           whileInView="visible"
-//           viewport={{ once: true, amount: 0.25 }}
-//           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-//         >
-//           {services.map((service, index) => (
-//             <motion.div key={index} variants={fadeIn("up", index * 0.1 + 0.3)}>
-//               <Card className="h-full transition-all duration-300 hover:shadow-lg hover:border-primary/50 group">
-//                 <CardHeader>
-//                   <div className="mb-4 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary/20 transition-colors">
-//                     <service.icon size={24} />
-//                   </div>
-//                   <CardTitle>{service.title}</CardTitle>
-//                 </CardHeader>
-//                 <CardContent>
-//                   <p className="text-muted-foreground">{service.description}</p>
-//                 </CardContent>
-//               </Card>
-//             </motion.div>
-//           ))}
-//         </motion.div>
-//       </div>
-//     </section>
-//   );
-// }
-
-
-
 "use client";
 
 import React, { useRef, useEffect, useMemo, useCallback, useState } from "react";
@@ -113,7 +52,7 @@ const services: Service[] = [
     features: ["Generative AI", "MLOps & ModelOps", "Automation & RPA", "AI Governance"],
     highlighted: true,
     stats: "Deployed across 30+ Enterprises",
-    image: "https://images.unsplash.com/photo-1555949963-aa79dcee981d?w=1400&q=80",
+    image: "./enterprise-ai.png",
     enterprise: true,
     compliance: ["SOC2", "ISO27001"],
     sla: "99.95% uptime",
@@ -133,7 +72,7 @@ const services: Service[] = [
     features: ["Smart Contracts", "Layer-2 Scaling", "Token Design", "On-chain Identity"],
     highlighted: true,
     stats: "100M+ Transactions Secured",
-    image: "https://images.unsplash.com/photo-1611078480014-6f7f7b8b0a3f?w=1400&q=80",
+    image: "./blockchain.png",
     enterprise: true,
     compliance: ["GDPR-ready", "KYC/AML integrations"],
     sla: "Dedicated node & monitoring",
@@ -152,7 +91,7 @@ const services: Service[] = [
     icon: BarChart,
     features: ["Multi-Cloud", "Kubernetes & Serverless", "IaC (Terraform)", "SRE & Observability"],
     stats: "100s TB Processed Monthly",
-    image: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=1400&q=80",
+    image: "./cloud.png",
     enterprise: true,
     sla: "24/7 run & response",
     pricingTier: "Enterprise",
@@ -167,7 +106,7 @@ const services: Service[] = [
     icon: Palette,
     features: ["Zero Trust", "Threat Modeling", "Penetration Testing", "Secure SDLC"],
     stats: "99.9% Risk Coverage",
-    image: "https://images.unsplash.com/photo-1556740749-887f6717d7e4?w=1400&q=80",
+    image: "./cyber.png",
     enterprise: true,
     compliance: ["SOC2", "ISO27001", "PCI-DSS"],
     pricingTier: "Enterprise",
@@ -182,7 +121,7 @@ const services: Service[] = [
     icon: BarChart,
     features: ["Data Lakehouse", "Real-time Dashboards", "Predictive ML", "Causal Analytics"],
     stats: "1B+ Processed Events",
-    image: "https://images.unsplash.com/photo-1560757212-1a2d4b3f8f41?w=1400&q=80",
+    image: "./da.png",
     enterprise: true,
     sla: "Real-time SLA options",
     pricingTier: "Enterprise",
@@ -200,7 +139,7 @@ const services: Service[] = [
     icon: Globe,
     features: ["C-level Advisory", "Transformation Roadmaps", "Operating Model Design", "Change Management"],
     stats: "50+ Strategic Programs",
-    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1400&q=80",
+    image: "dt.png",
     enterprise: true,
     pricingTier: "Custom",
     caseStudies: [{ name: "Global business unit redesign", impact: "Scaled new product line in 9 months" }]
@@ -214,7 +153,7 @@ const services: Service[] = [
     icon: Globe,
     features: ["React/Next.js", "Composable APIs", "Performance Engineering", "Accessibility & SEO"],
     stats: "200+ Projects Delivered",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1400&q=80",
+    image: "./website.png",
     highlighted: false,
     enterprise: false,
     pricingTier: "Professional",
@@ -229,7 +168,7 @@ const services: Service[] = [
     icon: Code,
     features: ["iOS & Android", "Flutter & Native", "Offline & Sync", "Performance Tuning"],
     stats: "150+ Apps Launched",
-    image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=1400&q=80",
+    image: "./mobile.png",
     highlighted: false,
     enterprise: false,
     pricingTier: "Professional",
@@ -244,7 +183,7 @@ const services: Service[] = [
     icon: Megaphone,
     features: ["Growth Marketing", "Creative Systems", "Programmatic Media", "Marketing Analytics"],
     stats: "500% Avg ROI (selected clients)",
-    image: "https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=1400&q=80",
+    image: "sm.png",
     highlighted: false,
     enterprise: false,
     pricingTier: "Growth",

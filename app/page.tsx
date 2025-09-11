@@ -6,7 +6,7 @@ import HeroSection from "@/components/ui/hero-section";
 import ServicesSection from "@/components/ui/services-section";
 import ProductsSection from "@/components/ui/products-section";
 import TestimonialsSection from "@/components/ui/testimonials-section";
-import ContactSection from "@/components/ui/contact-section";
+import ContactSection from "@/components/ui/ContactUs";
 import Technologies from "@/components/ui/tech-stack-strip";
 import AboutSection from "@/components/ui/AboutUsSection";
 import ChromaGrid from "@/components/ChromaGrid";
@@ -66,10 +66,10 @@ export default function Home(): JSX.Element {
               fadeOut={0.6}
               ease="power3.out"
             />
-            <ContactSection />
           </div>
         }
       />
+      <ContactSection />
     </>
   );
 }
