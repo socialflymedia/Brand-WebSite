@@ -70,20 +70,20 @@ export default function Footer() {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "SocialFly Networks",
-    url: "https://yourdomain.com",
-    logo: "https://yourdomain.com/logo.png",
+    url: "https://socialflynetworks.com",
+    logo: "https://socialflynetworks.com/logo.png",
     sameAs: [
-      "https://www.linkedin.com/company/social-flymedia/",
+      "https://www.linkedin.com/company/socialflynetworks/",
       "https://www.instagram.com/socialflynetworks/",
       "https://www.facebook.com/socialflynetworks/",
-      "https://twitter.com/socialfly",
-      "https://www.youtube.com/socialfly",
-      "https://github.com/socialfly",
+      "https://twitter.com/socialflynetworks",
+      "https://www.youtube.com/socialflynetworks",
+      "https://github.com/socialflynetworks",
     ],
     contactPoint: [
       {
         "@type": "ContactPoint",
-        telephone: "+91-8126040011",
+        telephone: "+91-9368088418",
         contactType: "customer service",
         areaServed: "IN",
         availableLanguage: ["English", "Hindi"],
@@ -114,7 +114,7 @@ export default function Footer() {
 
             <div className="mt-5 flex flex-wrap gap-3 items-center">
               <a
-                href="https://www.linkedin.com/company/social-flymedia/"
+                href="https://www.linkedin.com/company/socialflynetworks/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
@@ -154,7 +154,7 @@ export default function Footer() {
               </a>
 
               <a
-                href="https://www.youtube.com/socialfly"
+                href="https://www.youtube.com/socialflynetworks"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="YouTube"
@@ -164,7 +164,7 @@ export default function Footer() {
               </a>
 
               <a
-                href="https://github.com/socialfly"
+                href="https://github.com/socialflynetworks"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub"
@@ -176,7 +176,7 @@ export default function Footer() {
 
             <div className="mt-6 flex flex-col sm:flex-row sm:items-center sm:gap-3 gap-2">
               <a
-                href="/request-demo"
+                href="/contact"
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-orange-500 hover:bg-orange-600 text-black font-semibold"
                 aria-label="Request a demo"
               >
@@ -185,7 +185,7 @@ export default function Footer() {
               </a>
 
               <a
-                href="tel:+918126040011"
+                href="tel:+919368088418"
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-md border border-gray-800 hover:bg-gray-800 text-sm"
                 aria-label="Call enterprise sales"
               >
@@ -220,25 +220,16 @@ export default function Footer() {
               <h5 className="text-sm font-semibold text-white">Products</h5>
               <ul className="mt-4 space-y-2 text-sm text-gray-300">
                 <li>
-                  <Link href="/products/edufly" className="flex items-center gap-2 hover:text-white transition">
+                  <Link href="https://www.edufly.cloud" target="_blank" className="flex items-center gap-2 hover:text-white transition">
                     <ChevronRight className="w-4 h-4 text-orange-400" /> EduFly — School ERP
                   </Link>
                 </li>
                 <li>
-                  <Link href="/products/milkfly" className="flex items-center gap-2 hover:text-white transition">
+                  <Link href="https://www.milk-track.vercel.app" target="_blank" className="flex items-center gap-2 hover:text-white transition">
                     <ChevronRight className="w-4 h-4 text-orange-400" /> MilkFly — Dairy Ops
                   </Link>
                 </li>
-                <li>
-                  <Link href="/products/integrations" className="flex items-center gap-2 hover:text-white transition">
-                    <ChevronRight className="w-4 h-4 text-orange-400" /> Integrations & APIs
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/pricing" className="flex items-center gap-2 hover:text-white transition">
-                    <ChevronRight className="w-4 h-4 text-orange-400" /> Pricing
-                  </Link>
-                </li>
+
               </ul>
             </div>
 
@@ -246,18 +237,13 @@ export default function Footer() {
               <h5 className="text-sm font-semibold text-white">Solutions</h5>
               <ul className="mt-4 space-y-2 text-sm text-gray-300">
                 <li>
-                  <Link href="/solutions/schools" className="flex items-center gap-2 hover:text-white transition">
+                  <Link href="https://www.edufly.cloud" target="_blank" className="flex items-center gap-2 hover:text-white transition">
                     <ChevronRight className="w-4 h-4 text-orange-400" /> K-12 Schools
                   </Link>
                 </li>
                 <li>
-                  <Link href="/solutions/dairies" className="flex items-center gap-2 hover:text-white transition">
+                  <Link href="https://www.milk-track.vercel.app" target="_blank" className="flex items-center gap-2 hover:text-white transition">
                     <ChevronRight className="w-4 h-4 text-orange-400" /> Dairies & Cooperatives
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/solutions/enterprise" className="flex items-center gap-2 hover:text-white transition">
-                    <ChevronRight className="w-4 h-4 text-orange-400" /> Enterprise
                   </Link>
                 </li>
                 <li>

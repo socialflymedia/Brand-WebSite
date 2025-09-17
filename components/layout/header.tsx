@@ -107,15 +107,15 @@ const NAVIGATION_DATA: NavSection[] = [
     columns: "grid-cols-2",
     items: [
       {
-        title: "Marketing OS",
-        href: "/products/marketing-os",
-        desc: "All-in-one marketing platform",
+        title: "EduFly ERP",
+        href: "https://www.edufly.cloud",
+        desc: "Manages all verticals of educational institutions",
         badge: "New"
       },
       {
-        title: "Sales CRM",
-        href: "/products/crm",
-        desc: "Streamline your sales pipeline"
+        title: "MilkFly",
+        href: "https://www.milk-track.vercel.app",
+        desc: "Streamline your milk management operations",
       },    
     ],
   },
