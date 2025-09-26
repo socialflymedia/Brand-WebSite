@@ -1,4 +1,3 @@
-// components/layout/header.tsx
 "use client";
 
 import React, { useEffect, useState, useCallback, memo } from "react";
@@ -7,7 +6,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Menu, X, ChevronRight, ArrowRight, Globe, Code, Megaphone, Palette } from "lucide-react";
+import { Menu, X, ChevronRight, ArrowRight, Globe, Code, Megaphone, Palette, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
   NavigationMenu,
@@ -42,7 +41,6 @@ interface NavSection {
 
 // Constants
 const SCROLL_THRESHOLD = 20;
-const LOGO_SIZE = { mobile: "w-10 h-10", desktop: "md:w-11 md:h-11" };
 
 // Icons for services
 const serviceIcons = {
@@ -56,7 +54,7 @@ const serviceIcons = {
 const NAVIGATION_DATA: NavSection[] = [
   {
     title: "Services",
-    width: "w-[520px]",
+    width: "w-[90vw] sm:w-[520px]",
     columns: "grid-cols-1",
     items: [
       {
@@ -103,8 +101,8 @@ const NAVIGATION_DATA: NavSection[] = [
   },
   {
     title: "Products",
-    width: "w-[640px]",
-    columns: "grid-cols-2",
+    width: "w-[90vw] sm:w-[640px]",
+    columns: "grid-cols-1 sm:grid-cols-2",
     items: [
       {
         title: "EduFly ERP",
@@ -121,8 +119,8 @@ const NAVIGATION_DATA: NavSection[] = [
   },
   {
     title: "Resources",
-    width: "w-[560px]",
-    columns: "grid-cols-2",
+    width: "w-[90vw] sm:w-[560px]",
+    columns: "grid-cols-1 sm:grid-cols-2",
     items: [
       { title: "Case Studies", href: "/resources/case-studies" },
       { title: "Guides", href: "/resources/guides" },
@@ -164,45 +162,68 @@ const useScrolled = (threshold: number = SCROLL_THRESHOLD) => {
   return scrolled;
 };
 
-// Simple Logo without animations
-const Logo = memo<{ mounted: boolean }>(({ mounted }) => (
-  <Link
-    href="/"
-    className="flex items-center gap-2.5 md:gap-3 group"
-    aria-label="SocialFly Networks Home"
-  >
-    <div className={cn(
-      "relative flex-shrink-0 rounded-xl overflow-hidden shadow-md group-hover:shadow-lg transition-shadow duration-300",
-      LOGO_SIZE.mobile,
-      LOGO_SIZE.desktop
-    )}>
-      {mounted ? (
-        <Image
-          src="/icon.png"
-          alt="SocialFly Networks Logo"
-          fill
-          className="object-cover"
-          priority
-          sizes="(max-width: 768px) 40px, 44px"
-        />
-      ) : (
-        <div className="w-full h-full bg-gradient-to-br from-orange-400 to-orange-600" />
-      )}
-    </div>
+// Lightning-fast Logo with instant loading
+const Logo = memo<{ mounted: boolean }>(({ mounted }) => {
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [imageError, setImageError] = useState(false);
 
-    <div className="hidden md:flex flex-col leading-tight">
-      <span className="text-base font-bold text-gray-900 dark:text-white">
-        SocialFly Networks
-      </span>
-      <span className="text-xs text-gray-600 dark:text-gray-400 font-medium">
-        Digital Excellence
-      </span>
-    </div>
-  </Link>
-));
+  // Preload the image as soon as component mounts
+  useEffect(() => {
+    if (mounted) {
+      const img = new window.Image();
+      img.onload = () => setImageLoaded(true);
+      img.onerror = () => setImageError(true);
+      img.src = '/icon.png';
+    }
+  }, [mounted]);
+
+  return (
+    <Link
+      href="/"
+      className="flex items-center gap-2 sm:gap-2.5 md:gap-3 group min-w-0 flex-shrink-0"
+      aria-label="SocialFly Networks Home"
+    >
+      <div className="relative w-8 h-8 sm:w-10 sm:h-10 md:w-11 md:h-11 flex-shrink-0 rounded-xl overflow-hidden shadow-md group-hover:shadow-lg transition-shadow duration-300">
+        {mounted && imageLoaded && !imageError ? (
+          <Image
+            src="/icon.png"
+            alt="SocialFly Networks Logo"
+            fill
+            className="object-cover"
+            priority
+            sizes="(max-width: 640px) 32px, (max-width: 768px) 40px, 44px"
+            quality={100}
+            unoptimized={false}
+          />
+        ) : (
+          // SVG fallback that renders instantly - replace with your actual logo colors
+          <div className="w-full h-full bg-white dark:bg-gray-800 flex items-center justify-center">
+            <svg
+              viewBox="0 0 24 24"
+              className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-orange-500"
+              fill="currentColor"
+            >
+              <path d="M12 2L13.09 8.26L22 9L13.09 9.74L12 16L10.91 9.74L2 9L10.91 8.26L12 2Z" />
+              <path d="M12 6L12.5 10L16 10.5L12.5 11L12 15L11.5 11L8 10.5L11.5 10L12 6Z" />
+            </svg>
+          </div>
+        )}
+      </div>
+
+      <div className="hidden sm:flex flex-col leading-tight min-w-0">
+        <span className="text-sm md:text-base font-bold text-gray-900 dark:text-white truncate">
+          SocialFly Networks
+        </span>
+        <span className="text-[10px] md:text-xs text-gray-600 dark:text-gray-400 font-medium">
+          Digital Excellence
+        </span>
+      </div>
+    </Link>
+  );
+});
 Logo.displayName = 'Logo';
 
-// Fixed NavMenuItem with stable dropdown
+// Responsive NavMenuItem with better mobile handling
 const NavMenuItem = memo<{
   section: NavSection;
   pathname: string;
@@ -213,23 +234,25 @@ const NavMenuItem = memo<{
     <NavigationMenuItem>
       <NavigationMenuTrigger
         className={cn(
-          "px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200",
+          "px-2 lg:px-3 py-2 text-xs lg:text-sm font-medium rounded-lg transition-all duration-200",
           "hover:bg-white/10 dark:hover:bg-gray-800/30",
           "data-[state=open]:bg-white/10 dark:data-[state=open]:bg-gray-800/30",
+          "flex items-center gap-1",
           isActive && "text-orange-500 dark:text-orange-400"
         )}
       >
-        {section.title}
+        <span className="truncate">{section.title}</span>
+        <ChevronDown className="h-3 w-3 lg:h-4 lg:w-4 transition-transform duration-200 group-data-[state=open]:rotate-180" />
       </NavigationMenuTrigger>
 
       <NavigationMenuContent
         className={cn(
-          "min-w-[400px]",
+          "min-w-[300px]",
           section.width
         )}
       >
-        <div className="p-4 bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl border border-gray-200/50 dark:border-gray-700/50 rounded-xl shadow-2xl">
-          <div className={cn("grid gap-2", section.columns)}>
+        <div className="p-3 sm:p-4 bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl border border-gray-200/50 dark:border-gray-700/50 rounded-xl shadow-2xl max-h-[70vh] overflow-y-auto">
+          <div className={cn("grid gap-1 sm:gap-2", section.columns)}>
             {section.items.map((item) => {
               const isItemActive = pathname === item.href;
               return (
@@ -237,27 +260,27 @@ const NavMenuItem = memo<{
                   key={item.href}
                   href={item.href}
                   className={cn(
-                    "group block p-3 rounded-lg transition-all duration-200",
+                    "group block p-2 sm:p-3 rounded-lg transition-all duration-200",
                     "hover:bg-gray-100/80 dark:hover:bg-gray-800/80",
                     isItemActive && "bg-orange-50/80 dark:bg-orange-900/20"
                   )}
                 >
-                  <div className="flex items-start gap-3">
+                  <div className="flex items-start gap-2 sm:gap-3">
                     {item.icon && (
-                      <div className="mt-0.5 p-1.5 rounded-md bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400">
+                      <div className="mt-0.5 p-1 sm:p-1.5 rounded-md bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 flex-shrink-0">
                         {item.icon}
                       </div>
                     )}
                     <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-2 flex-wrap">
                         <span className={cn(
-                          "font-semibold text-gray-900 dark:text-white group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors",
+                          "text-sm font-semibold text-gray-900 dark:text-white group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors truncate",
                           isItemActive && "text-orange-600 dark:text-orange-400"
                         )}>
                           {item.title}
                         </span>
                         {item.badge && (
-                          <span className="px-1.5 py-0.5 text-[10px] font-semibold rounded bg-gradient-to-r from-orange-500 to-pink-500 text-white">
+                          <span className="px-1.5 py-0.5 text-[10px] font-semibold rounded bg-gradient-to-r from-orange-500 to-pink-500 text-white flex-shrink-0">
                             {item.badge}
                           </span>
                         )}
@@ -268,7 +291,7 @@ const NavMenuItem = memo<{
                         </p>
                       )}
                     </div>
-                    <ChevronRight className="w-4 h-4 text-gray-400 group-hover:text-orange-500 opacity-0 group-hover:opacity-100 transition-all" />
+                    <ChevronRight className="w-3 h-3 sm:w-4 sm:h-4 text-gray-400 group-hover:text-orange-500 opacity-0 group-hover:opacity-100 transition-all flex-shrink-0" />
                   </div>
                 </Link>
               );
@@ -281,7 +304,7 @@ const NavMenuItem = memo<{
 });
 NavMenuItem.displayName = 'NavMenuItem';
 
-// Static links
+// Responsive static links
 const StaticNavLinks = memo<{ pathname: string }>(({ pathname }) => (
   <>
     {STATIC_LINKS.map((link) => {
@@ -291,7 +314,7 @@ const StaticNavLinks = memo<{ pathname: string }>(({ pathname }) => (
           <Link
             href={link.href}
             className={cn(
-              "px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 inline-block",
+              "px-2 lg:px-3 py-2 text-xs lg:text-sm font-medium rounded-lg transition-all duration-200 inline-block truncate",
               "hover:bg-white/10 dark:hover:bg-gray-800/30",
               isActive ? "text-orange-500 dark:text-orange-400 bg-white/10 dark:bg-gray-800/30" : ""
             )}
@@ -305,11 +328,11 @@ const StaticNavLinks = memo<{ pathname: string }>(({ pathname }) => (
 ));
 StaticNavLinks.displayName = 'StaticNavLinks';
 
-// Desktop Navigation
+// Responsive Desktop Navigation
 const DesktopNavigation = memo<{ pathname: string }>(({ pathname }) => (
-  <nav className="hidden md:flex items-center gap-4" role="navigation">
+  <nav className="hidden md:flex items-center gap-1 lg:gap-4 flex-1 justify-center" role="navigation">
     <NavigationMenu>
-      <NavigationMenuList className="flex items-center gap-1">
+      <NavigationMenuList className="flex items-center gap-0 lg:gap-1 flex-wrap">
         {NAVIGATION_DATA.map((section) => (
           <NavMenuItem key={section.title} section={section} pathname={pathname} />
         ))}
@@ -319,7 +342,7 @@ const DesktopNavigation = memo<{ pathname: string }>(({ pathname }) => (
           <Link
             href="/blog"
             className={cn(
-              "px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 inline-block",
+              "px-2 lg:px-3 py-2 text-xs lg:text-sm font-medium rounded-lg transition-all duration-200 inline-block",
               "hover:bg-white/10 dark:hover:bg-gray-800/30",
               pathname === "/blog" ? "text-orange-500 dark:text-orange-400 bg-white/10 dark:bg-gray-800/30" : ""
             )}
@@ -331,30 +354,34 @@ const DesktopNavigation = memo<{ pathname: string }>(({ pathname }) => (
         <StaticNavLinks pathname={pathname} />
       </NavigationMenuList>
     </NavigationMenu>
-
-    <div className="flex items-center gap-3 ml-auto">
-      <Button
-        className="group px-5 py-2 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white rounded-lg font-medium shadow-md hover:shadow-lg transition-all duration-300"
-        asChild
-      >
-        <Link href="/contact">
-          <span className="flex items-center gap-2">
-            Get Started
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-          </span>
-        </Link>
-      </Button>
-    </div>
   </nav>
 ));
 DesktopNavigation.displayName = 'DesktopNavigation';
 
-// Mobile Toggle (removed theme toggle)
+// Responsive CTA Button
+const CTAButton = memo(() => (
+  <div className="hidden md:flex items-center gap-2 lg:gap-3 flex-shrink-0">
+    <Button
+      className="group px-3 lg:px-5 py-1.5 lg:py-2 text-xs lg:text-sm bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white rounded-lg font-medium shadow-md hover:shadow-lg transition-all duration-300"
+      asChild
+    >
+      <Link href="/contact">
+        <span className="flex items-center gap-1 lg:gap-2">
+          <span className="truncate">Get Started</span>
+          <ArrowRight className="w-3 h-3 lg:w-4 lg:h-4 group-hover:translate-x-0.5 transition-transform" />
+        </span>
+      </Link>
+    </Button>
+  </div>
+));
+CTAButton.displayName = 'CTAButton';
+
+// Mobile Toggle
 const MobileToggle = memo<{
   isOpen: boolean;
   onToggle: () => void;
 }>(({ isOpen, onToggle }) => (
-  <div className="md:hidden flex items-center gap-2">
+  <div className="md:hidden flex items-center gap-2 flex-shrink-0">
     <button
       onClick={onToggle}
       className="p-2 rounded-lg hover:bg-white/10 dark:hover:bg-gray-800/30 transition-colors"
@@ -390,9 +417,9 @@ const MobileAccordionItem = memo<{ section: NavSection; pathname: string }>(({ s
                 isActive && "bg-orange-500/10 text-orange-500"
               )}
             >
-              <span className="text-sm">{item.title}</span>
+              <span className="text-sm truncate flex-1">{item.title}</span>
               {item.badge && (
-                <span className="px-1.5 py-0.5 text-[10px] rounded bg-gradient-to-r from-orange-500 to-pink-500 text-white">
+                <span className="px-1.5 py-0.5 text-[10px] rounded bg-gradient-to-r from-orange-500 to-pink-500 text-white flex-shrink-0 ml-2">
                   {item.badge}
                 </span>
               )}
@@ -413,10 +440,10 @@ const MobileNavigation = memo<{ isOpen: boolean; pathname: string }>(({ isOpen, 
         initial={{ height: 0, opacity: 0 }}
         animate={{ height: "auto", opacity: 1 }}
         exit={{ height: 0, opacity: 0 }}
-        transition={{ duration: 0.2 }}
+        transition={{ duration: 0.2, ease: "easeInOut" }}
         className="md:hidden overflow-hidden"
       >
-        <nav className="mt-4 pb-4 px-2 space-y-3">
+        <nav className="mt-4 pb-4 px-2 space-y-3 max-h-[calc(100vh-120px)] overflow-y-auto">
           {/* Quick Links */}
           <div className="grid grid-cols-2 gap-2">
             <Link
@@ -490,14 +517,30 @@ const MobileNavigation = memo<{ isOpen: boolean; pathname: string }>(({ isOpen, 
 ));
 MobileNavigation.displayName = 'MobileNavigation';
 
-// Main Header Component
+// Main Header Component with image preloading
 export default function Header() {
   const pathname = usePathname();
   const [mounted, setMounted] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const scrolled = useScrolled();
 
-  useEffect(() => setMounted(true), []);
+  // Preload logo immediately when component mounts
+  useEffect(() => {
+    setMounted(true);
+    
+    // Preload the logo image immediately
+    const link = document.createElement('link');
+    link.rel = 'preload';
+    link.as = 'image';
+    link.href = '/icon.png';
+    document.head.appendChild(link);
+
+    return () => {
+      // Cleanup
+      document.head.removeChild(link);
+    };
+  }, []);
+
   useEffect(() => setIsOpen(false), [pathname]);
 
   // Keyboard navigation
@@ -511,8 +554,18 @@ export default function Header() {
 
   // Prevent scroll when mobile menu open
   useEffect(() => {
-    document.body.style.overflow = isOpen ? 'hidden' : '';
-    return () => { document.body.style.overflow = ''; };
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+      document.body.style.paddingRight = '0px';
+    } else {
+      document.body.style.overflow = '';
+      document.body.style.paddingRight = '';
+    }
+    
+    return () => { 
+      document.body.style.overflow = ''; 
+      document.body.style.paddingRight = '';
+    };
   }, [isOpen]);
 
   const handleToggleMenu = useCallback(() => setIsOpen(prev => !prev), []);
@@ -522,24 +575,25 @@ export default function Header() {
       <header
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
-          scrolled ? "py-2" : "py-3 md:py-4"
+          scrolled ? "py-1 sm:py-2" : "py-2 sm:py-3 md:py-4"
         )}
       >
-        <div className="mx-auto w-[95%] max-w-[1400px] px-0 sm:px-2">
+        <div className="mx-auto w-full max-w-[1400px] px-4 sm:px-6 md:px-8">
           <div className={cn(
-            "relative rounded-2xl transition-all duration-500",
+            "relative rounded-xl sm:rounded-2xl transition-all duration-500",
             scrolled
               ? "bg-white/70 dark:bg-gray-900/70 backdrop-blur-2xl shadow-xl"
               : "bg-white/60 dark:bg-gray-900/60 backdrop-blur-xl shadow-lg",
             "border border-white/20 dark:border-gray-700/20"
           )}>
             {/* Subtle gradient overlay */}
-            <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-orange-500/5 via-transparent to-pink-500/5 pointer-events-none" />
+            <div className="absolute inset-0 rounded-xl sm:rounded-2xl bg-gradient-to-r from-orange-500/5 via-transparent to-pink-500/5 pointer-events-none" />
 
-            <div className="relative px-4 py-3 sm:px-6 md:px-8">
-              <div className="flex items-center justify-between gap-4">
+            <div className="relative px-4 sm:px-6 py-2 sm:py-3 md:px-8">
+              <div className="flex items-center justify-between gap-2 sm:gap-4 min-h-[44px]">
                 <Logo mounted={mounted} />
                 <DesktopNavigation pathname={pathname} />
+                <CTAButton />
                 <MobileToggle isOpen={isOpen} onToggle={handleToggleMenu} />
               </div>
 
