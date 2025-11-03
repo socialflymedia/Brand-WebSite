@@ -949,7 +949,7 @@ export default function ServicesSection(): JSX.Element {
 
   return (
     <section
-      className="relative py-20 lg:py-28 overflow-hidden"
+      className="relative  lg:py-28 overflow-hidden"
       aria-label="Premium services"
       style={{
         // EXACT SAME BACKGROUND
@@ -960,12 +960,9 @@ export default function ServicesSection(): JSX.Element {
       <div className="relative z-10 container px-4 sm:px-6 lg:px-8">
         {/* EXACT SAME HEADER */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/8 border border-orange-500/20 mb-3">
-            <Zap className="w-4 h-4 text-orange-400" />
-            <span className="text-sm font-medium text-orange-400">AI-Powered Solutions</span>
-          </div>
 
-          <h2 className="text-3xl md:text-5xl font-bold mb-3 text-white">
+
+          <h2 className="text-5xl md:text-5xl font-bold mb-3 text-white">
             Discover Our{" "}
             <span className="bg-gradient-to-r from-orange-400 via-orange-500 to-red-500 bg-clip-text text-transparent">Premium Services</span>
           </h2>
@@ -1006,7 +1003,6 @@ export default function ServicesSection(): JSX.Element {
         <div className="text-center mt-10">
           <button className="inline-flex items-center gap-3 px-7 py-3 bg-gradient-to-r from-orange-500 to-orange-600 rounded-xl font-semibold text-white shadow-lg shadow-orange-500/20 hover:shadow-orange-500/30 transition">
             <span>Get Started Today</span>
-            <Rocket className="w-4 h-4" />
           </button>
         </div>
       </div>
