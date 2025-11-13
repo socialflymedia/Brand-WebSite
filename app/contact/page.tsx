@@ -152,7 +152,7 @@ export default function ContactSection(): JSX.Element {
                   </div>
                   <div>
                     <p className="text-white font-semibold">Sales Inquiries</p>
-                    <a href="tel:+918126040011" className="text-white/60 text-sm hover:underline">
+                    <a href="tel:+9411978307" className="text-white/60 text-sm hover:underline">
                       +91 81260 40011
                     </a>
                   </div>

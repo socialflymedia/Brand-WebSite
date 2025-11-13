@@ -103,7 +103,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         name: "SocialFly Networks",
         image: LOGO,
         url: SITE_URL,
-        telephone: "+91-8126040011",
+        telephone: "+91-9411978307",
         priceRange: "₹₹",
         address: {
           "@type": "PostalAddress",
