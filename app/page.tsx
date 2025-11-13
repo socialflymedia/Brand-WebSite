@@ -97,7 +97,7 @@ const SectionLoader = () => (
 export default function Home(): JSX.Element {
   // SEO Meta Data
   const pageTitle = "SocialFly Networks - Web Development, Mobile Apps & Digital Marketing in Mawana, Meerut";
-  const pageDescription = "Leading IT company in Mawana, Meerut offering custom web development, mobile apps, ecommerce solutions, Google Business optimization, Meta ads & local SEO. Serving NCR since 2020. Call +91 81260 40011 for free consultation.";
+  const pageDescription = "Leading IT company in Mawana, Meerut offering custom web development, mobile apps, ecommerce solutions, Google Business optimization, Meta ads & local SEO. Serving NCR since 2020. Call +91 9411978307 for free consultation.";
   const canonical = "https://socialflynetworks.com/";
   const ogImage = "https://socialflynetworks.com/og-image-optimized.jpg";
   const keywords = "web development mawana, app development meerut, digital marketing ncr, seo services meerut, google business mawana, meta ads meerut, website design mawana, ecommerce development, socialfly networks";
@@ -128,7 +128,7 @@ export default function Home(): JSX.Element {
     contactPoint: [
       {
         "@type": "ContactPoint",
-        telephone: "+91-81260-40011",
+        telephone: "+91-9411978307",
         contactType: "customer service",
         contactOption: "TollFree",
         areaServed: ["IN"],
@@ -300,7 +300,7 @@ export default function Home(): JSX.Element {
         name: "How much does a website cost from SocialFly Networks?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Website costs vary based on requirements. Basic business websites start from ₹15,000, while custom web applications and ecommerce sites begin at ₹35,000. Contact us at +91 81260 40011 for a free quote tailored to your needs."
+          text: "Website costs vary based on requirements. Basic business websites start from ₹15,000, while custom web applications and ecommerce sites begin at ₹35,000. Contact us at +91 9411978307 for a free quote tailored to your needs."
         }
       },
       {
