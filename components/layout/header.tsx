@@ -522,14 +522,7 @@ export default function Header() {
 
                 {/* Desktop CTA */}
                 <div className="hidden md:flex items-center gap-3">
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    className="text-sm"
-                    asChild
-                  >
-                    <Link href="/portfolio">Portfolio</Link>
-                  </Button>
+                 
                   <Button
                     size="sm"
                     className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-md hover:shadow-lg transition-all"

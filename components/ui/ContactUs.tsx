@@ -87,7 +87,7 @@ export default function ContactSection(): JSX.Element {
                   </div>
                   <div>
                     <p className="text-white font-semibold">Sales Inquiries</p>
-                    <p className="text-white/60 text-sm">+91 98X-XXX-XXXX</p>
+                    <p className="text-white/60 text-sm">+91 9411978307</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
@@ -96,7 +96,7 @@ export default function ContactSection(): JSX.Element {
                   </div>
                   <div>
                     <p className="text-white font-semibold">Email</p>
-                    <p className="text-white/60 text-sm">hello@yourdomain.com</p>
+                    <p className="text-white/60 text-sm">info@socialflynetworks.com</p>
                   </div>
                 </div>
               </div>

@@ -1,29 +1,20 @@
 "use client";
-
 import React, { Suspense, lazy } from "react";
 import Head from "next/head";
 import Script from "next/script";
 import dynamic from "next/dynamic";
-
-// Priority components - loaded immediately
 import HeroSection from "@/components/ui/hero-section";
 import ServicesSection from "@/components/ui/services-section";
-
-// Lazy load non-critical components for better performance
 const ProductsSection = lazy(() => import("@/components/ui/products-section"));
 const TestimonialsSection = lazy(() => import("@/components/ui/testimonials-section"));
 const ContactSection = lazy(() => import("@/components/ui/ContactUs"));
 const Technologies = lazy(() => import("@/components/ui/tech-stack-strip"));
 const AboutSection = lazy(() => import("@/components/ui/AboutUsSection"));
 const ServicesShowcase = lazy(() => import("@/components/ui/serivces-showcase-section"));
-
-// Dynamic import for ChromaGrid with no SSR
 const ChromaGrid = dynamic(() => import("@/components/ChromaGrid"), {
   ssr: false,
   loading: () => <div className="h-full bg-gray-50 dark:bg-gray-900 animate-pulse" />
 });
-
-// Types
 type Item = {
   image: string;
   title: string;
@@ -34,8 +25,6 @@ type Item = {
   url?: string;
   quote?: string;
 };
-
-// Testimonial data
 const testimonialItems: Item[] = [
   {
     image: "https://i.pravatar.cc/300?img=1",
@@ -88,12 +77,9 @@ const testimonialItems: Item[] = [
     quote: "Professional team, on-time delivery, and excellent post-launch support. Highly recommend for NCR businesses!",
   },
 ];
-
-// Loading component for lazy loaded sections
 const SectionLoader = () => (
   <div className="w-full h-96 bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 animate-pulse" />
 );
-
 export default function Home(): JSX.Element {
   // SEO Meta Data
   const pageTitle = "SocialFly Networks - Web Development, Mobile Apps & Digital Marketing in Mawana, Meerut";

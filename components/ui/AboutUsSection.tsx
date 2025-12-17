@@ -3,7 +3,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Check, ArrowRight, Sparkles, Award, Globe } from 'lucide-react';
+import { Check, ArrowRight, Sparkles, Award, Globe, Link } from 'lucide-react';
 import Aurora from './Aurora';
 
 interface Feature {
@@ -31,10 +31,10 @@ const features: Feature[] = [
 ];
 
 const metrics = [
-  { value: '250+', label: 'Premium Projects', sublabel: 'Delivered globally' },
+  { value: '25+', label: 'Premium Projects', sublabel: 'Delivered globally' },
   { value: '98%', label: 'Client Retention', sublabel: 'Long-term partnerships' },
-  { value: '$2.4B+', label: 'Client Valuation', sublabel: 'Combined portfolio value' },
-  { value: '24h', label: 'Response Time', sublabel: 'Executive support' }
+  { value: '24h', label: 'Response Time', sublabel: 'Executive support' },
+  { value: '100%', label: 'On-Time Delivery', sublabel: 'Every Project' }
 ];
 
 export default function AboutSection() {
@@ -68,30 +68,14 @@ export default function AboutSection() {
             <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black leading-[0.9] text-white max-w-5xl mx-auto">
               We Are Digital 
               <span className="bg-gradient-to-r from-orange-400 via-amber-400 to-red-400 bg-clip-text text-transparent"> Innovators</span>
-              <br />Shaping Tomorrow's Web
+              <br />Shaping Tomorrow&apos;s Web
             </h1>
 
             <p className="text-xl lg:text-2xl text-white/80 max-w-4xl mx-auto leading-relaxed">
-              Founded on the belief that exceptional digital experiences drive business success, we combine strategic thinking with cutting-edge technology to deliver solutions that don't just meet expectations—they redefine them.
+              Founded on the belief that exceptional digital experiences drive business success, we combine strategic thinking with cutting-edge technology to deliver solutions that don&apos;t just meet expectations—they redefine them.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-6">
-              <Button 
-                size="lg" 
-                className="bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white px-8 py-4 text-lg font-semibold shadow-2xl hover:shadow-orange-500/25 transition-all duration-300"
-              >
-                Start Your Transformation
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
-              
-              <Button 
-                variant="outline" 
-                size="lg"
-                className="border-white/20 text-white hover:bg-white/10 px-8 py-4 text-lg backdrop-blur-md"
-              >
-                View Our Portfolio
-              </Button>
-            </div>
+           
           </motion.div>
         </div>
 
@@ -113,7 +97,7 @@ export default function AboutSection() {
                 </div>
                 
                 <p className="text-white/70 text-lg mb-8 leading-relaxed">
-                  We don't just build products—we architect digital ecosystems that scale with your ambitions and exceed market expectations.
+                  We don&apos;t just build products—we architect digital ecosystems that scale with your ambitions and exceed market expectations.
                 </p>
 
                 <div className="grid grid-cols-1 gap-6">
@@ -193,14 +177,16 @@ export default function AboutSection() {
               <CardContent className="p-6 lg:p-8 text-center">
                 <h4 className="text-xl font-bold text-white mb-3">Ready to Scale?</h4>
                 <p className="text-white/80 text-sm mb-6 leading-relaxed">
-                  Join the ranks of industry leaders who've transformed their digital presence with our expertise.
+                  Join the ranks of industry leaders who&apos;ve transformed their digital presence with our expertise.
                 </p>
+                <a href="/contact">
                 <Button 
                   className="w-full bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white font-semibold shadow-lg hover:shadow-orange-500/25 transition-all duration-300"
                 >
                   Begin Your Journey
                   <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
+                </a>
               </CardContent>
             </Card>
           </motion.div>

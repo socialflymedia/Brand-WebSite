@@ -25,71 +25,61 @@ type Testimonial = {
 const testimonialsData: Testimonial[] = [
   {
     id: 1,
-    name: "Sarah Chen",
-    role: "CEO, TechFlow",
-    company: "TechFlow Solutions",
-    image:
-      "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face",
-    rating: 5,
-    text:
-      "This product has completely transformed how we approach our business processes. The level of innovation and attention to detail is absolutely remarkable.",
-  },
-  {
-    id: 2,
-    name: "Marcus Rodriguez",
-    role: "CTO, InnovateLab",
-    company: "InnovateLab Inc.",
-    image:
-      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
-    rating: 5,
-    text:
-      "I've worked with many solutions in my career, but this stands out for its exceptional quality and seamless integration. Truly game-changing.",
-  },
-  {
-    id: 3,
-    name: "Emily Zhang",
-    role: "Product Manager, DataVision",
-    company: "DataVision Analytics",
-    image:
-      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
-    rating: 5,
-    text:
-      "The user experience is phenomenal. Our team adoption rate was 100% within the first week. It's intuitive, powerful, and beautifully designed.",
-  },
-  {
-    id: 4,
-    name: "David Kim",
-    role: "Founder, StartupNext",
-    company: "StartupNext Ventures",
-    image:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
-    rating: 5,
-    text:
-      "Outstanding support and incredible results. This solution has helped us scale faster than we ever imagined possible. Highly recommended.",
-  },
-  {
-    id: 5,
-    name: "Lisa Thompson",
-    role: "Director of Operations",
-    company: "GlobalTech Corp",
-    image:
-      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&crop=face",
-    rating: 5,
-    text:
-      "The ROI has been incredible. We've seen a 300% improvement in efficiency and our customers absolutely love the enhanced experience.",
-  },
-  {
-    id: 6,
-    name: "Alex Johnson",
-    role: "VP Engineering",
-    company: "CloudFirst Systems",
+    name: "Ramit Raman Rastogi",
+    role: "Founder",
+    company: "Gyansathi",
     image:
       "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&h=150&fit=crop&crop=face",
     rating: 5,
     text:
-      "Elegant, powerful, and reliable. This is exactly what we needed to take our platform to the next level. The technical excellence is unmatched.",
+      "Working with this team has been an exceptional experience. Their strategic clarity and execution helped us strengthen our digital presence and scale with confidence.",
+  },
+  {
+    id: 2,
+    name: "Abhay Chauhan",
+    role: "Founder",
+    company: "Studio Arch Tantra",
+    image:
+      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
+    rating: 5,
+    text:
+      "The attention to detail and design-first approach truly stood out. The results aligned perfectly with our brand vision and business goals.",
+  },
+  {
+    id: 3,
+    name: "Manik Chaudhary",
+    role: "Founder",
+    company: "MilkFly",
+    image:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
+    rating: 5,
+    text:
+      "A highly professional and reliable team. Their solutions significantly improved our operational efficiency and customer engagement.",
+  },
+  {
+    id: 4,
+    name: "Shahista",
+    role: "Founder",
+    company: "Shas Design Studio",
+    image:
+      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&crop=face",
+    rating: 5,
+    text:
+      "The collaboration was smooth and productive. The creativity, execution, and support exceeded expectations at every stage.",
+  },
+  {
+    id: 5,
+    name: "Naman Bansal",
+    role: "Founder",
+    company: "WeltBridge",
+    image:
+      "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face",
+    rating: 5,
+    text:
+      "Exceptional quality and timely delivery. The impact on our brand positioning and digital growth has been remarkable.",
   },
 ];
+
 
 export default function TestimonialsSection({
   items,
@@ -217,10 +207,7 @@ export default function TestimonialsSection({
                     <p className="text-white/90 text-lg leading-relaxed mb-8 min-h-[120px]">&quot;{t.text}&quot;</p>
 
                     <div className="flex items-center gap-4">
-                      <div className="relative">
-                        <img src={t.image} alt={t.name} className="w-14 h-14 rounded-full object-cover border-2 border-white/20 group-hover:border-white/40 transition-all duration-300" />
-                        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-orange-500/20 to-red-500/20 group-hover:opacity-100 opacity-0 transition-opacity duration-300 pointer-events-none" />
-                      </div>
+                     
 
                       <div>
                         <h4 className="font-semibold text-white text-lg">{t.name}</h4>
