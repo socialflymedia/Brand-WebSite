@@ -1,31 +1,122 @@
-"use client";
-import React, { Suspense, lazy } from "react";
-import Head from "next/head";
-import Script from "next/script";
+// app/page.tsx - Server Component (NO "use client" directive)
+// This ensures faster initial load with Server-Side Rendering
 import dynamic from "next/dynamic";
-import HeroSection from "@/components/ui/hero-section";
-import ServicesSection from "@/components/ui/services-section";
-const ProductsSection = lazy(() => import("@/components/ui/products-section"));
-const TestimonialsSection = lazy(() => import("@/components/ui/testimonials-section"));
-const ContactSection = lazy(() => import("@/components/ui/ContactUs"));
-const Technologies = lazy(() => import("@/components/ui/tech-stack-strip"));
-const AboutSection = lazy(() => import("@/components/ui/AboutUsSection"));
-const ServicesShowcase = lazy(() => import("@/components/ui/serivces-showcase-section"));
-const ChromaGrid = dynamic(() => import("@/components/ChromaGrid"), {
-  ssr: false,
-  loading: () => <div className="h-full bg-gray-50 dark:bg-gray-900 animate-pulse" />
-});
-type Item = {
-  image: string;
-  title: string;
-  subtitle?: string;
-  handle?: string;
-  borderColor?: string;
-  gradient?: string;
-  url?: string;
-  quote?: string;
+import type { Metadata } from "next";
+import Script from "next/script";
+
+// ============================================================================
+// PAGE-SPECIFIC METADATA - Override layout defaults for homepage
+// ============================================================================
+export const metadata: Metadata = {
+  title: "SocialFly Networks | #1 Web Development & Digital Marketing in Mawana, Meerut | Since 2020",
+  description:
+    "Looking for the best website developer in Mawana or Meerut? SocialFly Networks delivers custom websites, mobile apps, SEO & Meta Ads. 100+ happy clients. ₹15,000 onwards. Free consultation: +91-9411978307",
+  keywords: [
+    "web development mawana",
+    "website design meerut",
+    "best web developer near me",
+    "digital marketing agency meerut",
+    "app development mawana",
+    "seo services meerut",
+    "google business profile mawana",
+    "meta ads agency meerut",
+    "ecommerce website mawana",
+    "socialfly networks",
+    "affordable website meerut",
+    "mobile app developer ncr",
+  ],
+  alternates: {
+    canonical: "https://socialflynetworks.com",
+  },
+  openGraph: {
+    title: "SocialFly Networks | Mawana & Meerut's #1 Digital Agency",
+    description:
+      "Transform your business online. Custom websites from ₹15,000, mobile apps, SEO & digital marketing. Trusted by 100+ NCR businesses since 2020.",
+    url: "https://socialflynetworks.com",
+    images: [
+      {
+        url: "https://socialflynetworks.com/og-image-optimized.jpg",
+        width: 1200,
+        height: 630,
+        alt: "SocialFly Networks - Web Development & Digital Marketing Agency in Mawana, Meerut",
+      },
+    ],
+  },
+  twitter: {
+    title: "SocialFly Networks | #1 Digital Agency in Mawana, Meerut",
+    description:
+      "Custom websites, apps & digital marketing. 100+ happy clients. Call +91-9411978307 for free consultation.",
+  },
 };
-const testimonialItems: Item[] = [
+
+// ============================================================================
+// COMPONENT IMPORTS - Optimized Loading Strategy
+// ============================================================================
+
+// Critical above-the-fold component - Import directly (no lazy loading)
+import HeroSection from "@/components/ui/hero-section";
+
+// Second most important - Import directly for fast LCP
+import ServicesSection from "@/components/ui/services-section";
+
+// Below-the-fold components - Dynamic imports with loading states
+const ServicesShowcase = dynamic(
+  () => import("@/components/ui/serivces-showcase-section"),
+  {
+    loading: () => <SectionSkeleton height="600px" />,
+  }
+);
+
+const Technologies = dynamic(
+  () => import("@/components/ui/tech-stack-strip"),
+  {
+    loading: () => <SectionSkeleton height="200px" />,
+  }
+);
+
+const AboutSection = dynamic(
+  () => import("@/components/ui/AboutUsSection"),
+  {
+    loading: () => <SectionSkeleton height="500px" />,
+  }
+);
+
+const ProductsSection = dynamic(
+  () => import("@/components/ui/products-section"),
+  {
+    loading: () => <SectionSkeleton height="600px" />,
+  }
+);
+
+const TestimonialsSection = dynamic(
+  () => import("@/components/ui/testimonials-section"),
+  {
+    loading: () => <SectionSkeleton height="680px" />,
+  }
+);
+
+const ContactSection = dynamic(
+  () => import("@/components/ui/ContactUs"),
+  {
+    loading: () => <SectionSkeleton height="500px" />,
+  }
+);
+
+// Client-only component (uses browser APIs like mouse events)
+const ChromaGrid = dynamic(
+  () => import("@/components/ChromaGrid"),
+  {
+    ssr: false, // Disable SSR for this component
+    loading: () => (
+      <div className="h-full bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 animate-pulse rounded-2xl" />
+    ),
+  }
+);
+
+// ============================================================================
+// TESTIMONIAL DATA
+// ============================================================================
+const testimonialItems = [
   {
     image: "https://i.pravatar.cc/300?img=1",
     title: "Sarah Johnson",
@@ -34,7 +125,8 @@ const testimonialItems: Item[] = [
     borderColor: "#3B82F6",
     gradient: "linear-gradient(145deg, #3B82F6, #000)",
     url: "https://github.com/sarahjohnson",
-    quote: "SocialFly Networks transformed our digital presence. Their web development expertise helped us achieve 3x growth in just 6 months.",
+    quote:
+      "SocialFly Networks transformed our digital presence. Their web development expertise helped us achieve 3x growth in just 6 months.",
   },
   {
     image: "https://i.pravatar.cc/300?img=2",
@@ -44,7 +136,8 @@ const testimonialItems: Item[] = [
     borderColor: "#10B981",
     gradient: "linear-gradient(180deg, #10B981, #000)",
     url: "https://linkedin.com/in/mikechen",
-    quote: "Outstanding local SEO and Google Business optimization. We're now the top-ranked store in Mawana area.",
+    quote:
+      "Outstanding local SEO and Google Business optimization. We're now the top-ranked store in Mawana area.",
   },
   {
     image: "https://i.pravatar.cc/300?img=3",
@@ -54,7 +147,8 @@ const testimonialItems: Item[] = [
     borderColor: "#F59E0B",
     gradient: "linear-gradient(145deg, #F59E0B, #000)",
     url: "https://linkedin.com/in/priyasharma",
-    quote: "Their EduFly ERP system streamlined our entire institution. Excellent support team in Meerut!",
+    quote:
+      "Their EduFly ERP system streamlined our entire institution. Excellent support team in Meerut!",
   },
   {
     image: "https://i.pravatar.cc/300?img=4",
@@ -64,7 +158,8 @@ const testimonialItems: Item[] = [
     borderColor: "#EF4444",
     gradient: "linear-gradient(180deg, #EF4444, #000)",
     url: "https://linkedin.com/in/rajeshkumar",
-    quote: "Meta ads campaign brought 200+ new customers to our Mawana showroom. ROI exceeded expectations!",
+    quote:
+      "Meta ads campaign brought 200+ new customers to our Mawana showroom. ROI exceeded expectations!",
   },
   {
     image: "https://i.pravatar.cc/300?img=5",
@@ -74,517 +169,287 @@ const testimonialItems: Item[] = [
     borderColor: "#8B5CF6",
     gradient: "linear-gradient(145deg, #8B5CF6, #000)",
     url: "https://linkedin.com/in/anitaverma",
-    quote: "Professional team, on-time delivery, and excellent post-launch support. Highly recommend for NCR businesses!",
+    quote:
+      "Professional team, on-time delivery, and excellent post-launch support. Highly recommend for NCR businesses!",
   },
 ];
-const SectionLoader = () => (
-  <div className="w-full h-96 bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 animate-pulse" />
-);
-export default function Home(): JSX.Element {
-  // SEO Meta Data
-  const pageTitle = "SocialFly Networks - Web Development, Mobile Apps & Digital Marketing in Mawana, Meerut";
-  const pageDescription = "Leading IT company in Mawana, Meerut offering custom web development, mobile apps, ecommerce solutions, Google Business optimization, Meta ads & local SEO. Serving NCR since 2020. Call +91 9411978307 for free consultation.";
-  const canonical = "https://socialflynetworks.com/";
-  const ogImage = "https://socialflynetworks.com/og-image-optimized.jpg";
-  const keywords = "web development mawana, app development meerut, digital marketing ncr, seo services meerut, google business mawana, meta ads meerut, website design mawana, ecommerce development, socialfly networks";
 
-  // Enhanced Organization Schema
-  const organizationLd = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    name: "SocialFly Networks",
-    alternateName: "SFN Digital",
-    url: canonical,
-    logo: "https://socialflynetworks.com/icon.png",
-    foundingDate: "2020",
-    founders: [
-      {
-        "@type": "Person",
-        name: "SocialFly Networks Team"
-      }
-    ],
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "Main Market Road",
-      addressLocality: "Mawana",
-      addressRegion: "Uttar Pradesh",
-      postalCode: "250401",
-      addressCountry: "IN"
-    },
-    contactPoint: [
-      {
-        "@type": "ContactPoint",
-        telephone: "+91-9411978307",
-        contactType: "customer service",
-        contactOption: "TollFree",
-        areaServed: ["IN"],
-        availableLanguage: ["en", "hi"]
-      }
-    ],
-    sameAs: [
-      "https://facebook.com/socialflynetworks",
-      "https://twitter.com/socialflynet",
-      "https://linkedin.com/company/socialflynetworks",
-      "https://instagram.com/socialflynetworks"
-    ],
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.9",
-      reviewCount: "127"
-    }
-  };
+// ============================================================================
+// LOADING SKELETON COMPONENT
+// ============================================================================
+function SectionSkeleton({ height = "400px" }: { height?: string }) {
+  return (
+    <div
+      className="w-full bg-gradient-to-r from-gray-100 via-gray-50 to-gray-100 dark:from-gray-800 dark:via-gray-900 dark:to-gray-800 animate-pulse"
+      style={{ height }}
+      aria-hidden="true"
+    />
+  );
+}
 
-  // Local Business Schema
-  const localBusinessLd = {
+// ============================================================================
+// HOMEPAGE-SPECIFIC STRUCTURED DATA
+// ============================================================================
+function HomePageStructuredData() {
+  const webPageSchema = {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "@id": canonical,
-    name: "SocialFly Networks",
-    image: ogImage,
-    priceRange: "₹₹",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "Main Market Road",
-      addressLocality: "Mawana",
-      addressRegion: "UP",
-      postalCode: "250401",
-      addressCountry: "IN"
+    "@type": "WebPage",
+    "@id": "https://socialflynetworks.com/#webpage",
+    url: "https://socialflynetworks.com",
+    name: "SocialFly Networks - Web Development, Mobile Apps & Digital Marketing in Mawana, Meerut",
+    description:
+      "Leading IT company in Mawana, Meerut offering custom web development, mobile apps, ecommerce solutions, Google Business optimization, Meta ads & local SEO.",
+    isPartOf: { "@id": "https://socialflynetworks.com/#website" },
+    about: { "@id": "https://socialflynetworks.com/#organization" },
+    primaryImageOfPage: {
+      "@type": "ImageObject",
+      url: "https://socialflynetworks.com/og-image-optimized.jpg",
     },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: "29.0961",
-      longitude: "77.9191"
-    },
-    url: canonical,
-    telephone: "+9411978307",
-    openingHoursSpecification: [
-      {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-        opens: "09:00",
-        closes: "19:00"
-      }
-    ],
-    areaServed: [
-      {
-        "@type": "City",
-        name: "Mawana"
-      },
-      {
-        "@type": "City",
-        name: "Meerut"
-      },
-      {
-        "@type": "City",
-        name: "Noida"
-      },
-      {
-        "@type": "State",
-        name: "NCR"
-      }
-    ]
-  };
-
-  // Service Schema
-  const serviceLd = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    serviceType: ["Web Development", "Mobile App Development", "Digital Marketing", "SEO Services"],
-    provider: {
-      "@type": "Organization",
-      name: "SocialFly Networks"
-    },
-    areaServed: {
-      "@type": "State",
-      name: "Uttar Pradesh"
-    },
-    hasOfferCatalog: {
-      "@type": "OfferCatalog",
-      name: "Digital Services",
+    breadcrumb: {
+      "@type": "BreadcrumbList",
       itemListElement: [
         {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "Web Development",
-            description: "Custom website development using Next.js, React, and modern technologies"
-          }
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://socialflynetworks.com",
         },
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "Mobile App Development",
-            description: "Native and cross-platform mobile app development"
-          }
-        },
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "Digital Marketing",
-            description: "SEO, Google Ads, Meta Ads, and social media marketing"
-          }
-        }
-      ]
-    }
+      ],
+    },
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: ["h1", "h2", ".hero-text"],
+    },
+    specialty: "Digital Services for Local Businesses",
   };
 
-  // Enhanced Breadcrumb Schema
-  const breadcrumbLd = {
+  const howToSchema = {
     "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
+    "@type": "HowTo",
+    name: "How to Get Started with SocialFly Networks",
+    description: "Simple steps to transform your business with our digital services",
+    step: [
       {
-        "@type": "ListItem",
+        "@type": "HowToStep",
         position: 1,
-        name: "Home",
-        item: canonical
+        name: "Free Consultation",
+        text: "Call us at +91-9411978307 or fill our contact form for a free consultation",
+        url: "https://socialflynetworks.com/contact",
       },
       {
-        "@type": "ListItem",
+        "@type": "HowToStep",
         position: 2,
-        name: "Services",
-        item: `${canonical}services`
+        name: "Discuss Requirements",
+        text: "Share your business goals and requirements with our expert team",
       },
       {
-        "@type": "ListItem",
+        "@type": "HowToStep",
         position: 3,
-        name: "Products",
-        item: `${canonical}products`
+        name: "Get Custom Proposal",
+        text: "Receive a detailed proposal with timeline and transparent pricing",
       },
       {
-        "@type": "ListItem",
+        "@type": "HowToStep",
         position: 4,
-        name: "About",
-        item: `${canonical}about`
+        name: "Project Kickoff",
+        text: "Start your project with our dedicated team and regular updates",
       },
-      {
-        "@type": "ListItem",
-        position: 5,
-        name: "Contact",
-        item: `${canonical}contact`
-      }
-    ]
-  };
-
-  // Enhanced FAQ Schema
-  const faqLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: "What services does SocialFly Networks offer in Mawana and Meerut?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "We offer comprehensive digital services including custom web development, mobile app development, ecommerce solutions, digital marketing, SEO, Google Business optimization, and Meta ads management for businesses in Mawana, Meerut, and the entire NCR region."
-        }
-      },
-      {
-        "@type": "Question",
-        name: "How much does a website cost from SocialFly Networks?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Website costs vary based on requirements. Basic business websites start from ₹15,000, while custom web applications and ecommerce sites begin at ₹35,000. Contact us at +91 9411978307 for a free quote tailored to your needs."
-        }
-      },
-      {
-        "@type": "Question",
-        name: "Do you provide on-site services in Mawana and Meerut?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Yes, we provide both on-site consultations and remote services for clients in Mawana, Meerut, Noida, and throughout the NCR region. Our team can visit your business for initial discussions and project planning."
-        }
-      },
-      {
-        "@type": "Question",
-        name: "How long does it take to develop a website or app?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Development time depends on project complexity. Basic websites take 2-3 weeks, custom web applications 4-8 weeks, and mobile apps 8-12 weeks. We provide detailed timelines during the consultation phase."
-        }
-      },
-      {
-        "@type": "Question",
-        name: "What is EduFly ERP?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "EduFly ERP is our flagship education management system that handles admissions, fees, attendance, exams, and all administrative tasks for schools and colleges. It's cloud-based and accessible from anywhere."
-        }
-      },
-      {
-        "@type": "Question",
-        name: "Do you offer post-launch support and maintenance?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Yes, we provide comprehensive post-launch support including bug fixes, updates, hosting management, and ongoing maintenance. Support packages start from ₹5,000/month."
-        }
-      }
-    ]
-  };
-
-  // WebSite Schema for Sitelinks Search Box
-  const websiteLd = {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "@id": `${canonical}#website`,
-    url: canonical,
-    name: "SocialFly Networks",
-    description: pageDescription,
-    publisher: {
-      "@id": `${canonical}#organization`
-    },
-    potentialAction: {
-      "@type": "SearchAction",
-      target: {
-        "@type": "EntryPoint",
-        urlTemplate: `${canonical}search?q={search_term_string}`
-      },
-      "query-input": "required name=search_term_string"
-    },
-    inLanguage: "en-IN"
+    ],
+    totalTime: "PT30M",
   };
 
   return (
     <>
-      <Head>
-        {/* Primary Meta Tags */}
-        <title>{pageTitle}</title>
-        <meta name="title" content={pageTitle} />
-        <meta name="description" content={pageDescription} />
-        <meta name="keywords" content={keywords} />
-        <meta name="author" content="SocialFly Networks" />
-        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-        <meta name="googlebot" content="index, follow" />
-        <meta name="language" content="English" />
-        <meta name="revisit-after" content="7 days" />
-        <meta name="rating" content="general" />
-        <link rel="canonical" href={canonical} />
-
-        {/* Viewport for Responsiveness */}
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-        <meta name="format-detection" content="telephone=yes" />
-        <meta name="HandheldFriendly" content="true" />
-        <meta name="MobileOptimized" content="320" />
-
-        {/* Open Graph / Facebook */}
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={canonical} />
-        <meta property="og:title" content={pageTitle} />
-        <meta property="og:description" content={pageDescription} />
-        <meta property="og:image" content={ogImage} />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:image:alt" content="SocialFly Networks - Digital Excellence" />
-        <meta property="og:site_name" content="SocialFly Networks" />
-        <meta property="og:locale" content="en_IN" />
-
-        {/* Twitter */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:url" content={canonical} />
-        <meta name="twitter:title" content={pageTitle} />
-        <meta name="twitter:description" content={pageDescription} />
-        <meta name="twitter:image" content={ogImage} />
-        <meta name="twitter:image:alt" content="SocialFly Networks - Digital Excellence" />
-        <meta name="twitter:site" content="@socialflynet" />
-        <meta name="twitter:creator" content="@socialflynet" />
-
-        {/* Favicon and App Icons */}
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <link rel="manifest" href="/site.webmanifest" />
-        <meta name="theme-color" content="#f97316" />
-        <meta name="msapplication-TileColor" content="#f97316" />
-
-        {/* Preconnect to external domains */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="dns-prefetch" href="https://i.pravatar.cc" />
-
-        {/* Alternate URLs for language/region */}
-        <link rel="alternate" hrefLang="en-in" href={canonical} />
-        <link rel="alternate" hrefLang="x-default" href={canonical} />
-
-        {/* Additional SEO Tags */}
-        <meta property="article:publisher" content="https://facebook.com/socialflynetworks" />
-        <meta property="article:author" content="SocialFly Networks" />
-        <meta name="geo.region" content="IN-UP" />
-        <meta name="geo.placename" content="Mawana, Meerut" />
-        <meta name="geo.position" content="29.0961;77.9191" />
-        <meta name="ICBM" content="29.0961, 77.9191" />
-      </Head>
-
-      {/* JSON-LD Structured Data */}
       <Script
-        id="organization-ld"
+        id="webpage-schema"
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }}
         strategy="afterInteractive"
       />
       <Script
-        id="local-business-ld"
+        id="howto-schema"
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
         strategy="afterInteractive"
       />
-      <Script
-        id="service-ld"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceLd) }}
-        strategy="afterInteractive"
-      />
-      <Script
-        id="breadcrumb-ld"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
-        strategy="afterInteractive"
-      />
-      <Script
-        id="faq-ld"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }}
-        strategy="afterInteractive"
-      />
-      <Script
-        id="website-ld"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteLd) }}
-        strategy="afterInteractive"
-      />
+    </>
+  );
+}
 
-      {/* Hidden H1 for SEO - Screen Reader Only */}
-      <h1 className="sr-only">
-        SocialFly Networks - Leading Web Development, Mobile Apps & Digital Marketing Company in Mawana, Meerut | Serving NCR Since 2020
-      </h1>
+// ============================================================================
+// MAIN PAGE COMPONENT
+// ============================================================================
+export default function HomePage() {
+  return (
+    <>
+      {/* Homepage-specific structured data */}
+      <HomePageStructuredData />
 
-      {/* Main Content Sections */}
-      <main className="min-h-screen overflow-x-hidden">
-        {/* Priority sections - loaded immediately */}
-        <section id="hero" className="w-full">
+      {/* Main content wrapper */}
+      <div className="min-h-screen overflow-x-hidden">
+        {/* 
+          HERO SECTION 
+          - Critical for LCP (Largest Contentful Paint)
+          - Loaded immediately, not lazy loaded
+          - Contains primary H1 for SEO
+        */}
+        <section
+          id="hero"
+          className="relative w-full"
+          aria-label="Welcome to SocialFly Networks"
+        >
           <HeroSection />
         </section>
 
-        <section id="services" className="w-full">
+        {/* 
+          SERVICES OVERVIEW 
+          - Important for user journey
+          - Loaded immediately for fast interaction
+        */}
+        <section
+          id="services"
+          className="relative w-full"
+          aria-label="Our Services"
+        >
           <ServicesSection />
         </section>
 
-        <section id="services-section" className="w-full">
+        {/* 
+          SERVICES SHOWCASE 
+          - Detailed service information
+          - Lazy loaded but important for conversions
+        */}
+        <section
+          id="services-showcase"
+          className="relative w-full"
+          aria-label="Services Details"
+        >
           <ServicesShowcase />
         </section>
 
-        {/* Lazy loaded sections with Suspense for better performance */}
-        <Suspense fallback={<SectionLoader />}>
-          <section id="technologies" className="w-full">
-            <Technologies />
-          </section>
-        </Suspense>
+        {/* 
+          TECHNOLOGY STACK 
+          - Trust signals
+          - Shows technical expertise
+        */}
+        <section
+          id="technologies"
+          className="relative w-full"
+          aria-label="Technologies We Use"
+        >
+          <Technologies />
+        </section>
 
-        <Suspense fallback={<SectionLoader />}>
-          <section id="about" className="w-full">
-            <AboutSection />
-          </section>
-        </Suspense>
+        {/* 
+          ABOUT SECTION 
+          - Company information
+          - Builds trust and credibility
+        */}
+        <section
+          id="about"
+          className="relative w-full"
+          aria-label="About SocialFly Networks"
+        >
+          <AboutSection />
+        </section>
 
-        <Suspense fallback={<SectionLoader />}>
-          <section id="products" className="w-full">
-            <ProductsSection />
-          </section>
-        </Suspense>
+        {/* 
+          PRODUCTS SECTION 
+          - Showcases EduFly ERP and other products
+          - Revenue generation
+        */}
+        <section
+          id="products"
+          className="relative w-full"
+          aria-label="Our Products"
+        >
+          <ProductsSection />
+        </section>
 
-        <Suspense fallback={<SectionLoader />}>
-          <section 
-            id="testimonials" 
-            className="w-full"
-            aria-label="Customer Testimonials"
-          >
-            <TestimonialsSection
-              items={testimonialItems}
-              height={680}
-              ChromaGridComponent={
-                <div className="h-full relative w-full max-w-full overflow-hidden">
-                  <ChromaGrid
-                    items={testimonialItems}
-                    radius={300}
-                    damping={0.45}
-                    fadeOut={0.6}
-                    ease="power3.out"
-                  />
-                </div>
-              }
-            />
-          </section>
-        </Suspense>
+        {/* 
+          TESTIMONIALS 
+          - Social proof
+          - Critical for conversions
+        */}
+        <section
+          id="testimonials"
+          className="relative w-full"
+          aria-label="Customer Testimonials and Reviews"
+        >
+          <TestimonialsSection
+            items={testimonialItems}
+            height={680}
+            ChromaGridComponent={
+              <div className="h-full relative w-full max-w-full overflow-hidden">
+                <ChromaGrid
+                  items={testimonialItems}
+                  radius={300}
+                  damping={0.45}
+                  fadeOut={0.6}
+                  ease="power3.out"
+                />
+              </div>
+            }
+          />
+        </section>
 
-        <Suspense fallback={<SectionLoader />}>
-          <section id="contact" className="w-full">
-            <ContactSection />
-          </section>
-        </Suspense>
-      </main>
+        {/* 
+          CONTACT SECTION 
+          - Final CTA
+          - Lead generation
+        */}
+        <section
+          id="contact"
+          className="relative w-full"
+          aria-label="Contact Us"
+        >
+          <ContactSection />
+        </section>
+      </div>
 
-      {/* Responsive CSS Utilities */}
-      <style jsx global>{`
-        /* Screen reader only class */
-        .sr-only {
-          position: absolute;
-          width: 1px;
-          height: 1px;
-          padding: 0;
-          margin: -1px;
-          overflow: hidden;
-          clip: rect(0, 0, 0, 0);
-          white-space: nowrap;
-          border-width: 0;
-        }
-
-        /* Ensure full width sections on mobile */
-        @media (max-width: 640px) {
-          section {
-            padding-left: 0;
-            padding-right: 0;
-            margin-left: 0;
-            margin-right: 0;
-          }
-        }
-
-        /* Prevent horizontal scroll */
-        html, body {
-          overflow-x: hidden;
-          max-width: 100vw;
-        }
-
-        /* Responsive container */
-        .container-responsive {
-          width: 100%;
-          padding-left: 1rem;
-          padding-right: 1rem;
-        }
-
-        @media (min-width: 640px) {
-          .container-responsive {
-            padding-left: 1.5rem;
-            padding-right: 1.5rem;
-          }
-        }
-
-        @media (min-width: 768px) {
-          .container-responsive {
-            padding-left: 2rem;
-            padding-right: 2rem;
-          }
-        }
-
-        @media (min-width: 1024px) {
-          .container-responsive {
-            max-width: 1280px;
-            margin-left: auto;
-            margin-right: auto;
-          }
-        }
-      `}</style>
+      {/* 
+        HIDDEN SEO CONTENT 
+        - Additional keyword-rich content for search engines
+        - Visually hidden but accessible to screen readers
+      */}
+      <div className="sr-only" aria-hidden="false">
+        <h2>Web Development Services in Mawana and Meerut</h2>
+        <p>
+          SocialFly Networks provides professional web development, mobile app
+          development, and digital marketing services in Mawana, Meerut, and
+          across NCR. Our team of expert developers and marketers help local
+          businesses establish a strong online presence.
+        </p>
+        <h3>Services We Offer:</h3>
+        <ul>
+          <li>Custom Website Development in Mawana</li>
+          <li>Mobile App Development in Meerut</li>
+          <li>E-commerce Website Development</li>
+          <li>SEO Services in Meerut and NCR</li>
+          <li>Google Business Profile Optimization</li>
+          <li>Meta Ads (Facebook & Instagram) Management</li>
+          <li>Google Ads Campaign Management</li>
+          <li>Social Media Marketing</li>
+          <li>UI/UX Design Services</li>
+          <li>EduFly ERP for Schools and Colleges</li>
+        </ul>
+        <h3>Areas We Serve:</h3>
+        <ul>
+          <li>Mawana, Uttar Pradesh</li>
+          <li>Meerut, Uttar Pradesh</li>
+          <li>Noida, Uttar Pradesh</li>
+          <li>Greater Noida</li>
+          <li>Ghaziabad</li>
+          <li>Delhi NCR</li>
+          <li>Hapur</li>
+          <li>Muzaffarnagar</li>
+        </ul>
+        <p>
+          Contact SocialFly Networks at +91-9411978307 for a free consultation.
+          We offer affordable website packages starting from ₹15,000 with free
+          SSL, hosting setup, and 3 months of support.
+        </p>
+      </div>
     </>
   );
 }
