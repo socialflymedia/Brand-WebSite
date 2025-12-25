@@ -5,6 +5,7 @@ import { Inter, Poppins } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
+import ChristmasPopup from "@/components/ui/ChristmasPopup";
 import { Analytics } from "@vercel/analytics/next";
 import Script from "next/script";
 
@@ -739,6 +740,8 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+
+          <ChristmasPopup />
           {/* Skip to main content - Accessibility */}
           <a
             href="#main-content"
