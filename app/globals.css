@@ -214,5 +214,22 @@
 }
 
 /* -------------------------
+   Performance optimizations
+   ------------------------- */
+
+/* Paint containment for animated elements */
+.animate-float,
+.animate-ux-blob {
+  contain: layout style;
+  will-change: transform;
+}
+
+/* Auto-defer rendering of off-screen sections */
+section[id]:not(#hero) {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 500px;
+}
+
+/* -------------------------
    End of global styles
    ------------------------- */

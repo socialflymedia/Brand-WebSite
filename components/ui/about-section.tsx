@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { fadeIn } from "@/lib/animations";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function AboutSection() {
   return (
@@ -52,11 +53,13 @@ export default function AboutSection() {
           >
             <div className="relative rounded-lg overflow-hidden">
               <div className="aspect-video rounded-lg bg-gradient-to-br from-blue-600/20 to-purple-600/20 p-1 overflow-hidden">
-                <div className="w-full h-full rounded-lg overflow-hidden">
-                  <img
+                <div className="relative w-full h-full rounded-lg overflow-hidden">
+                  <Image
                     src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                     alt="Team collaboration"
-                    className="w-full h-full object-cover rounded-lg"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-cover rounded-lg"
                   />
                 </div>
               </div>

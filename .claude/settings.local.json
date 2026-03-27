@@ -6,7 +6,10 @@
       "Bash(npx next:*)",
       "Bash(for f:*)",
       "Bash(do rm:*)",
-      "Bash(cd:*)"
+      "Bash(cd:*)",
+      "Bash(xargs grep:*)",
+      "Bash(wc -l \"/d/major/SocialFly Networks/SFNWeb/Brand-WebSite/components/ui\"/*.tsx)",
+      "Bash(find \"/d/major/SocialFly Networks/SFNWeb/Brand-WebSite\" -name \"*.svg\" -type f -exec wc -l {} +)"
     ]
   }
 }

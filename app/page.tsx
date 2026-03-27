@@ -56,8 +56,13 @@ export const metadata: Metadata = {
 // Critical above-the-fold component - Import directly (no lazy loading)
 import HeroSection from "@/components/ui/hero-section";
 
-// Second most important - Import directly for fast LCP
-import ServicesSection from "@/components/ui/services-section";
+// Below-the-fold - lazy loaded for faster initial paint
+const ServicesSection = dynamic(
+  () => import("@/components/ui/services-section"),
+  {
+    loading: () => <SectionSkeleton height="500px" />,
+  }
+);
 
 // Below-the-fold components - Dynamic imports with loading states
 const ServicesShowcase = dynamic(

@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { fadeIn } from "@/lib/animations";
+import Image from "next/image";
 
 export default function AboutPage() {
   return (
@@ -41,9 +42,12 @@ export default function AboutPage() {
           <motion.div variants={fadeIn("right", 0.3)}>
             <div className="relative rounded-lg overflow-hidden">
               <div className="aspect-video bg-gradient-to-br from-blue-600/20 to-purple-600/20 p-1 rounded-lg">
-                <img
+                <Image
                   src="https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                   alt="Our team"
+                  width={1260}
+                  height={750}
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                   className="w-full h-full object-cover rounded-lg"
                 />
               </div>
