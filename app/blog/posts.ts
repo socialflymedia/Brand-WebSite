@@ -32,7 +32,7 @@ export const POSTS: BlogPost[] = [
     date: "2025-06-15",
     author: "SocialFly Networks",
     keywords: ["gyansathi case study", "education portal"],
-    image: "/blog/gyan-sathi.png",
+    image: "/blog/gyan-sathi.webp",
     ogImage: "/blog/gyansathi-og.jpg",
   },
   {
@@ -54,7 +54,7 @@ export const POSTS: BlogPost[] = [
     date: "2025-02-20",
     author: "SocialFly Networks",
     keywords: ["local marketing mawana", "google business setup"],
-    image: "/blog/marketing.png",
+    image: "/blog/marketing.webp",
     ogImage: "/blog/local-marketing-og.jpg",
   },
   {
@@ -65,7 +65,7 @@ export const POSTS: BlogPost[] = [
     date: "2025-08-04",
     author: "SocialFly Networks",
     keywords: ["ai web development tools", "ai developer tools 2025"],
-    image: "/blog/ai-2025.png",
+    image: "/blog/ai-2025.webp",
     ogImage: "/blog/ai-tools-og.jpg",
   },
 ];

@@ -110,7 +110,7 @@ const clientShowcase = [
         implementation: "Multi-tenant SaaS Platform",
         impact: "10M+ Active Users",
         technologies: ["Next.js", "Kubernetes", "PostgreSQL"],
-        image: "/portfolio/education-platform.png"
+        image: "/portfolio/education-platform.webp"
     },
     {
         name: "Architecture Innovation Hub",
@@ -118,7 +118,7 @@ const clientShowcase = [
         implementation: "3D Visualization Platform",
         impact: "40% Faster Project Delivery",
         technologies: ["Three.js", "WebGL", "Node.js"],
-        image: "/portfolio/architecture-hub.png"
+        image: "/portfolio/architecture-hub.webp"
     },
     {
         name: "Legal Tech Solutions",
@@ -126,7 +126,7 @@ const clientShowcase = [
         implementation: "AI-Powered Document Processing",
         impact: "85% Automation Rate",
         technologies: ["Python", "TensorFlow", "React"],
-        image: "/portfolio/legal-tech.png"
+        image: "/portfolio/legal-tech.webp"
     },
     {
         name: "FinTech Platform",
@@ -134,7 +134,7 @@ const clientShowcase = [
         implementation: "Blockchain Integration Layer",
         impact: "100K+ Transactions/Day",
         technologies: ["Web3", "Solidity", "GraphQL"],
-        image: "/portfolio/fintech-platform.png"
+        image: "/portfolio/fintech-platform.webp"
     },
     {
         name: "Healthcare Analytics",
@@ -142,7 +142,7 @@ const clientShowcase = [
         implementation: "Real-time Data Pipeline",
         impact: "Sub-second Response Time",
         technologies: ["Apache Kafka", "Redis", "ElasticSearch"],
-        image: "/portfolio/healthcare-analytics.png"
+        image: "/portfolio/healthcare-analytics.webp"
     },
     {
         name: "E-Commerce Enterprise",
@@ -150,7 +150,7 @@ const clientShowcase = [
         implementation: "Headless Commerce Architecture",
         impact: "3x Conversion Rate",
         technologies: ["Shopify Plus", "Next.js", "Contentful"],
-        image: "/portfolio/ecommerce-enterprise.png"
+        image: "/portfolio/ecommerce-enterprise.webp"
     }
 ];
 
@@ -378,7 +378,7 @@ export default function WebDevelopmentPage() {
                             <div className="relative w-full h-[600px] rounded-2xl overflow-hidden border border-orange-500/20">
                                 {/* Replace placeholder with actual image */}
                                 <Image
-                                    src="/services/web-hero.png" // 🔥 put your image path here (public/services/web-hero.jpg)
+                                    src="/services/web-hero.webp" // 🔥 put your image path here (public/services/web-hero.jpg)
                                     alt="Enterprise Web Development"
                                     fill
                                     className="object-cover rounded-2xl"

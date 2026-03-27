@@ -94,6 +94,6 @@ export const products: ProductType[] = [
   {
     name: "EduFly",
     description: "An all-in-one School ERP solution designed to transform the way educational institutions operate. From seamless student enrollment to efficient staff management, brings every aspect of school administration under one unified platform, streamlining processes like never before.",
-    image: "/landing_page.png",
+    image: "/landing_page.webp",
   },
 ];

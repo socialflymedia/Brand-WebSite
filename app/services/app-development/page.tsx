@@ -257,7 +257,7 @@ export default function AppDevelopmentPage() {
                                     {/* Left image */}
                                     <div className="relative w-64 h-[520px] bg-gray-900 rounded-[1rem] border-4 border-gray-800 overflow-hidden">
                                         <Image
-                                            src="/projects/zapstracts-hero-1.webp"
+                                            src="/services/zap-1.jpeg"
                                             alt="Zapstracts — Home screen with featured products"
                                             fill
                                             sizes="(max-width: 640px) 280px, (max-width: 1024px) 320px, 256px"
@@ -270,7 +270,7 @@ export default function AppDevelopmentPage() {
                                     {/* Right image */}
                                     <div className="relative w-64 h-[520px] bg-gray-900 rounded-[1rem] border-4 border-gray-800 overflow-hidden">
                                         <Image
-                                            src="/projects/zapstracts-hero-2.webp"
+                                            src="/services/zap-2.jpeg"
                                             alt="Zapstracts — Product detail and checkout flow"
                                             fill
                                             sizes="(max-width: 640px) 280px, (max-width: 1024px) 320px, 256px"

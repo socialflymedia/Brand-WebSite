@@ -76,7 +76,7 @@ export default function WebDevHero({ title, subtitle, ctaText = "Get a quote", c
         <motion.div initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6 }} className="relative">
           <div className="rounded-2xl overflow-hidden shadow-2xl border border-gray-800 bg-gradient-to-b from-[#070707] to-[#0b0b0b]">
             <div className="relative w-full h-60 md:h-72">
-              <Image src="/projects/gyansathi.png" alt="Gyansathi screenshot" fill style={{ objectFit: 'cover' }} priority placeholder="empty" />
+              <Image src="/projects/gyansathi.webp" alt="Gyansathi screenshot" fill style={{ objectFit: 'cover' }} priority placeholder="empty" />
             </div>
             <div className="p-4">
               <div className="flex items-start justify-between">

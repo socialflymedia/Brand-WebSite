@@ -21,7 +21,7 @@ const CASES = [
     id: "gyansathi",
     title: "Gyansathi — Education portal & student dashboard",
     summary: "Full-stack solution with course pages, dashboards and analytics to manage high concurrency.",
-    image: "/portfolio/education-platform.png",
+    image: "/portfolio/education-platform.webp",
     url: "https://www.gyansathi.com",
     highlights: [
       "Server-side rendering for SEO & speed",
@@ -37,7 +37,7 @@ const CASES = [
     id: "zapstracts",
     title: "Zapstracts — Ecommerce platform & app",
     summary: "Headless e-commerce site with optimized checkout and payment flows for Indian payments.",
-    image: "/portfolio/zapstracts.png",
+    image: "/portfolio/zapstracts.webp",
     url: "https://zapstracts.com",
     highlights: ["Secure checkout", "SEO product pages", "Payment gateway integrations"],
     metrics: [{ label: "Conversion uplift", value: "↑ 28% after CRO" }]
@@ -46,7 +46,7 @@ const CASES = [
     id: "sdmpublicschools",
     title: "SDM Public Schools — Admissions & CMS",
     summary: "Accessible, mobile-first site tailored for admission inquiries and staff content management.",
-    image: "/portfolio/sdmpublic.png",
+    image: "/portfolio/sdmpublic.webp",
     url: "https://sdmpublicschools.com",
     highlights: ["Admission funnels", "Lightweight CMS", "Accessibility improvements"],
     metrics: [{ label: "Admissions form conversions", value: "↑ 18%" }]

@@ -201,8 +201,8 @@ export default function ProductSection() {
             <div className="relative">
               <ImageCarousel
                 images={[
-                  "/edufly-1.png",
-                  "/edufly-2.png"
+                  "/edufly-1.webp",
+                  "/edufly-2.webp"
                 ]}
                 alt="EduFly Dashboard"
               />
@@ -224,9 +224,9 @@ export default function ProductSection() {
             <div className="relative">
               <ImageCarousel
                 images={[
-                  "/milkfly-1.png",
-                  "/milkfly-2.png",
-                  "/milkfly-3.png",
+                  "/milkfly-1.webp",
+                  "/milkfly-2.webp",
+                  "/milkfly-3.webp",
                 ]}
                 alt="MilkFly Platform"
               />
@@ -369,9 +369,9 @@ export default function ProductSection() {
             <div className="relative">
               <ImageCarousel
                 images={[
-                  "/gyansathi-1.png",
-                  "/gyansathi-2.png",
-                  "/gyansathi-3.png",
+                  "/gyansathi-1.webp",
+                  "/gyansathi-2.webp",
+                  "/gyansathi-3.webp",
                 ]}
                 alt="Gyansathi LMS Dashboard"
               />

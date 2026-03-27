@@ -41,7 +41,7 @@ export default function ProductsPage() {
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20 mix-blend-overlay"></div>
               <img
-                src="/landing_page.png"
+                src="/landing_page.webp"
                 alt="EduFly"
                 className="w-full h-[300px] object-cover"
               />
