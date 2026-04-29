@@ -22,13 +22,13 @@ import {
 export const metadata: Metadata = {
   title: "UI/UX Design Services | Product Design & Design Systems | SocialFly Networks",
   description:
-    "Elegant, research-driven UI/UX design in Mawana & Meerut. Product design, prototyping, design systems, accessibility and conversion-focused UX for web & mobile.",
+    "Elegant, research-driven UI/UX design from a leading product design company. Product design, prototyping, design systems, accessibility and conversion-focused UX for web and mobile.",
   keywords: [
-    "UI UX design Meerut",
-    "product design Mawana",
-    "ux research Mawana",
-    "design systems Meerut",
-    "Figma designers Meerut",
+    "ui ux design company",
+    "product design company",
+    "ux research company",
+    "design systems",
+    "figma design partner",
     "conversion optimisation",
     "mobile UX",
     "web UX"
@@ -53,7 +53,7 @@ const structuredData = {
   "description": "Human-centred UI/UX design and product strategy for web & mobile.",
   "url": "https://socialflynetworks.com/services/ui-ux-design",
   "serviceType": "UI/UX Design",
-  "areaServed": [{ "@type": "Place", "name": "Mawana" }, { "@type": "Place", "name": "Meerut" }],
+  "areaServed": [{ "@type": "Country", "name": "India" }, { "@type": "Country", "name": "Global" }],
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
     "name": "Design Offerings",
@@ -432,7 +432,7 @@ export default function UiUxDesignPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Need design that converts & delights?</h2>
-            <p className="text-xl text-gray-300 mb-10">We help Mawana & Meerut companies ship product-grade design — book a discovery call and we’ll audit your product and share quick wins.</p>
+            <p className="text-xl text-gray-300 mb-10">We help companies ship product-grade design — book a discovery call and we’ll audit your product and share quick wins.</p>
 
             <div className="flex gap-4 justify-center">
               <Link href="/contact" className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold rounded-lg">

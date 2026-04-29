@@ -24,21 +24,21 @@ import {
 export const metadata: Metadata = {
   title: "Digital Marketing Agency — SEO, Ads, Social & Growth | SocialFly Networks",
   description:
-    "Data-driven digital marketing in Mawana & Meerut. SEO, Google/Meta Ads, social media growth, content strategy, and conversion optimisation for measurable business growth.",
+    "Data-driven digital marketing company. SEO, Google/Meta Ads, social media growth, content strategy, and conversion optimisation for measurable business growth.",
   keywords: [
-    "digital marketing Mawana",
-    "SEO Meerut",
-    "Google Ads management",
-    "Meta Ads setup",
-    "social media marketing Mawana",
-    "content marketing Meerut",
-    "local SEO Mawana Meerut",
+    "digital marketing company",
+    "seo company",
+    "google ads management",
+    "meta ads agency",
+    "social media marketing company",
+    "content marketing company",
+    "performance marketing agency",
     "lead generation services"
   ],
   openGraph: {
     title: "Digital Marketing — SocialFly Networks",
     description:
-      "Performance marketing, SEO & social growth for businesses in Mawana, Meerut and NCR.",
+      "Performance marketing, SEO & social growth for ambitious businesses worldwide.",
     images: ["/services/digital-marketing-og.jpg"],
     type: "website",
     locale: "en_IN"
@@ -57,11 +57,11 @@ const structuredData = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   "name": "SocialFly Networks - Digital Marketing",
-  "description": "Full-funnel, data-driven digital marketing services for Mawana, Meerut and beyond.",
+  "description": "Full-funnel, data-driven digital marketing services for businesses worldwide.",
   "url": "https://socialflynetworks.com/services/digital-marketing",
   "@id": "https://socialflynetworks.com#digitalmarketing",
   "serviceType": "Digital Marketing",
-  "areaServed": ["Mawana", "Meerut", "Noida", "NCR", "India"],
+  "areaServed": ["India", "United States", "United Kingdom", "United Arab Emirates", "Singapore", "Global"],
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
     "name": "Digital Marketing Services",
@@ -140,7 +140,7 @@ const channels = [
     icon: Search,
     bullets: [
       "Technical SEO audits & remediation",
-      "Local SEO for Mawana & Meerut",
+      "Local & international SEO programs",
       "Google Ads (Search/Shopping) management",
       "Sitemap & structured data strategy"
     ]
@@ -187,8 +187,8 @@ const faqList = [
     a: "Yes — we manage campaigns across Google Ads and Meta Ads and can operate on your account or our managed accounts. We provide transparent reporting tied to conversions and ROI."
   },
   {
-    q: "Can you handle local Mawana / Meerut listings?",
-    a: "Absolutely — we optimize Google Business Profiles, citation consistency, local landing pages, and review generation to improve local discovery."
+    q: "Can you handle local listings and Google Business Profile optimization?",
+    a: "Absolutely — we optimize Google Business Profiles, citation consistency, local landing pages, and review generation to improve local discovery in any region."
   },
   {
     q: "What industries do you specialize in?",
@@ -226,13 +226,13 @@ export default function DigitalMarketingPage() {
               </h1>
 
               <p className="text-xl md:text-2xl text-gray-300 leading-relaxed mb-8">
-                SEO, Paid Media, Social & Content — integrated, measurable campaigns focused on leads, sales and long-term growth for businesses in Mawana & Meerut.
+                SEO, Paid Media, Social & Content — integrated, measurable campaigns focused on leads, sales and long-term growth for ambitious businesses worldwide.
               </p>
 
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-10">
                 {[
                   { value: "200+", label: "Campaigns Managed" },
-                  { value: "Local Focus", label: "Mawana & Meerut" },
+                  { value: "Global Reach", label: "Clients Worldwide" },
                   { value: "Multi-Channel", label: "SEO • Ads • Social" },
                   { value: "Data-Driven", label: "Attribution & CRO" }
                 ].map((stat, i) => (
@@ -525,7 +525,7 @@ export default function DigitalMarketingPage() {
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
               Ready to grow revenue with predictable marketing?
             </h2>
-            <p className="text-xl text-gray-300 mb-8">Let&apos;s design a performance program tailored to your Mawana / Meerut customers — strategy, execution & measurement.</p>
+            <p className="text-xl text-gray-300 mb-8">Let&apos;s design a performance program tailored to your customers — strategy, execution & measurement.</p>
 
             <div className="flex flex-col md:flex-row gap-4 justify-center">
               <Link href="/contact" className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-lg font-semibold">

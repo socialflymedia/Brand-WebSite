@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Guides — How-to & Tutorials | SocialFly Networks",
-  description: "Actionable guides on web development, app launches, marketing and product strategy for growing businesses in Mawana & Meerut.",
+  description: "Actionable guides on agentic AI, web development, app launches, marketing and product strategy for growing digital businesses.",
   alternates: { canonical: "https://socialflynetworks.com/resources/guides" },
   openGraph: { images: ["/resources/guides-og.jpg"], locale: "en_IN" },
   robots: { index: true, follow: true }

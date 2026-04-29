@@ -496,9 +496,12 @@ export default function ServicesSection(): JSX.Element {
 
         {/* EXACT SAME CTA */}
         <div className="text-center mt-10">
-          <button className="inline-flex items-center gap-3 px-7 py-3 bg-gradient-to-r from-orange-500 to-orange-600 rounded-xl font-semibold text-white shadow-lg shadow-orange-500/20 hover:shadow-orange-500/30 transition">
+          <a
+            href="/contact"
+            className="inline-flex items-center gap-3 px-7 py-3 bg-gradient-to-r from-orange-500 to-orange-600 rounded-xl font-semibold text-white shadow-lg shadow-orange-500/20 hover:shadow-orange-500/30 transition"
+          >
             <span>Get Started Today</span>
-          </button>
+          </a>
         </div>
       </div>
 

@@ -52,7 +52,7 @@ export default function WebDevHero({ title, subtitle, ctaText = "Get a quote", c
           <ul className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-gray-300">
             <li className="flex items-center gap-2"><span className="text-orange-400">•</span> SEO-first architecture</li>
             <li className="flex items-center gap-2"><span className="text-orange-400">•</span> Fast LCP & low CLS</li>
-            <li className="flex items-center gap-2"><span className="text-orange-400">•</span> Local Mawana/Meerut SEO</li>
+            <li className="flex items-center gap-2"><span className="text-orange-400">•</span> Global & local SEO</li>
             <li className="flex items-center gap-2"><span className="text-orange-400">•</span> Analytics & monitoring</li>
           </ul>
 
@@ -67,8 +67,8 @@ export default function WebDevHero({ title, subtitle, ctaText = "Get a quote", c
               <div className="text-xs text-gray-400">Average rating (clients)</div>
             </motion.div>
             <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.24 }}>
-              <div className="text-2xl font-bold">Mawana / Meerut</div>
-              <div className="text-xs text-gray-400">Local focus</div>
+              <div className="text-2xl font-bold">Global</div>
+              <div className="text-xs text-gray-400">Clients worldwide</div>
             </motion.div>
           </div>
         </motion.div>

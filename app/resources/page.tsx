@@ -7,11 +7,11 @@ import { BookOpen, FileText, Layers, Scroll, Archive, Users } from "lucide-react
 export const metadata: Metadata = {
   title: "Resources — Case Studies, Guides, Docs & Blog | SocialFly Networks",
   description: "Resources from SocialFly Networks — case studies, how-to guides, documentation, changelog, blog and community resources to help you build, market and scale digital products.",
-  keywords: ["resources", "case studies", "guides", "docs", "blog", "digital marketing Mawana", "web development Meerut"],
+  keywords: ["resources", "case studies", "guides", "docs", "blog", "digital marketing", "web development", "agentic ai"],
   alternates: { canonical: "https://socialflynetworks.com/resources" },
   openGraph: {
     title: "Resources • SocialFly Networks",
-    description: "Case studies, guides, documentation and blog from our team in Mawana & Meerut.",
+    description: "Case studies, guides, documentation and blog from the SocialFly Networks team.",
     images: ["/resources/resources-og.jpg"],
     type: "website",
     locale: "en_IN",

@@ -1,10 +1,14 @@
-// app/resources/blog/[slug]/page.tsx
+// app/blog/[slug]/page.tsx
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { getPostBySlug, getAllPosts } from "../posts";
 
 type Params = { params: { slug: string } };
+
+export function generateStaticParams() {
+  return getAllPosts().map((post) => ({ slug: post.slug }));
+}
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const post = getPostBySlug(params.slug);
@@ -20,13 +24,22 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
     title: `${post.title} | SocialFly Networks`,
     description: post.excerpt,
     keywords: post.keywords,
-    alternates: { canonical: `https://socialflynetworks.com/resources/blog/${post.slug}` },
+    alternates: { canonical: `https://socialflynetworks.com/blog/${post.slug}` },
     openGraph: {
       title: post.title,
       description: post.excerpt,
       images: [post.ogImage ?? post.image],
       locale: "en_IN",
-      type: "article"
+      type: "article",
+      url: `https://socialflynetworks.com/blog/${post.slug}`,
+      publishedTime: post.date,
+      authors: [post.author ?? "SocialFly Networks"],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt,
+      images: [post.ogImage ?? post.image],
     },
     robots: { index: true, follow: true }
   };
@@ -43,7 +56,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
             <h1 className="text-4xl font-bold text-white">Post not found</h1>
             <p className="text-gray-300 mt-2">We couldn&apos;t locate the article you requested.</p>
             <div className="mt-6">
-              <Link href="/resources/blog" className="text-orange-400 underline">Back to blog</Link>
+              <Link href="/blog" className="text-orange-400 underline">Back to blog</Link>
             </div>
           </div>
         </div>
@@ -51,23 +64,61 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
     );
   }
 
-  const jsonLd = {
+  const articleSchema = {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: post.title,
     description: post.excerpt,
+    keywords: post.keywords?.join(", "),
     author: { "@type": "Person", name: post.author ?? "SocialFly Networks" },
-    publisher: { "@type": "Organization", name: "SocialFly Networks", logo: { "@type": "ImageObject", url: "https://socialflynetworks.com/SFN_black_transparent_logo.png" } },
+    publisher: {
+      "@type": "Organization",
+      name: "SocialFly Networks",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://socialflynetworks.com/SFN_black_transparent_logo.png",
+      },
+    },
     datePublished: post.date,
-    mainEntityOfPage: { "@type": "WebPage", "@id": `https://socialflynetworks.com/resources/blog/${post.slug}` }
+    dateModified: post.date,
+    image: [`https://socialflynetworks.com${post.ogImage ?? post.image}`],
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `https://socialflynetworks.com/blog/${post.slug}`,
+    },
   };
 
-  // For simplicity we render an excerpt-based article — replace with MD/MDX or CMS when desired
+  const faqSchema = post.faqs?.length
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: post.faqs.map((f) => ({
+          "@type": "Question",
+          name: f.q,
+          acceptedAnswer: { "@type": "Answer", text: f.a },
+        })),
+      }
+    : null;
+
+  const related = getAllPosts()
+    .filter((p) => p.slug !== post.slug)
+    .slice(0, 3);
+
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
+
       <article className="pt-28 pb-20 bg-black">
-        <div className="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 prose prose-invert">
+        <div className="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <header>
             <div className="relative h-64 rounded-2xl overflow-hidden bg-gray-900">
               <Image src={post.image} alt={post.title} fill style={{ objectFit: "cover" }} placeholder="empty" />
@@ -83,20 +134,63 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
             </div>
           </header>
 
-          <section className="mt-6">
-            {/* Replace this with MD/MDX rendering or CMS-driven HTML in future */}
-            <p className="text-gray-300">{post.excerpt}</p>
-            <p className="text-gray-300 mt-4">(Full article content can be added here — replace `posts.ts` content with MD/MDX or fetch from CMS to render full body.)</p>
+          <section className="mt-8 sfn-article">
+            {post.body ? (
+              <div dangerouslySetInnerHTML={{ __html: post.body }} />
+            ) : (
+              <p className="text-gray-300">{post.excerpt}</p>
+            )}
           </section>
 
-          <footer className="mt-10">
-            <div className="bg-gray-900 p-4 rounded border border-gray-800">
-              <h3 className="text-white">Related posts</h3>
-              <div className="mt-3 flex gap-4">
-                {getAllPosts().filter(p => p.slug !== post.slug).slice(0,3).map(r => (
-                  <Link key={r.slug} href={`/resources/blog/${r.slug}`} className="text-orange-400">{r.title} →</Link>
+          {post.faqs?.length ? (
+            <section className="mt-12">
+              <h2 className="text-2xl font-bold text-white mb-4">Frequently Asked Questions</h2>
+              <div className="space-y-4">
+                {post.faqs.map((f, i) => (
+                  <details
+                    key={i}
+                    className="bg-gray-950 border border-gray-800 rounded-xl p-4 group"
+                  >
+                    <summary className="cursor-pointer text-white font-semibold marker:text-orange-400">
+                      {f.q}
+                    </summary>
+                    <p className="text-gray-300 mt-3">{f.a}</p>
+                  </details>
                 ))}
               </div>
+            </section>
+          ) : null}
+
+          <footer className="mt-12">
+            <div className="bg-gray-900 p-5 rounded-2xl border border-gray-800">
+              <h3 className="text-white font-semibold mb-3">Related posts</h3>
+              <div className="flex flex-col sm:flex-row gap-4">
+                {related.map((r) => (
+                  <Link
+                    key={r.slug}
+                    href={`/blog/${r.slug}`}
+                    className="text-orange-400 hover:text-orange-300"
+                  >
+                    {r.title} →
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            <div className="mt-8 bg-gradient-to-r from-orange-500/10 to-orange-600/5 border border-orange-500/20 rounded-2xl p-6 text-center">
+              <h3 className="text-2xl font-bold text-white mb-2">
+                Building agentic AI or a custom web product?
+              </h3>
+              <p className="text-gray-300 mb-4">
+                SocialFly Networks is an agentic AI and web development company shipping
+                production AI agents, SaaS platforms and mobile apps for clients worldwide.
+              </p>
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold rounded-lg"
+              >
+                Book a free consultation →
+              </Link>
             </div>
           </footer>
         </div>

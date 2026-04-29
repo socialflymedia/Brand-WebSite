@@ -8,44 +8,50 @@ import Script from "next/script";
 // PAGE-SPECIFIC METADATA - Override layout defaults for homepage
 // ============================================================================
 export const metadata: Metadata = {
-  title: "SocialFly Networks | #1 Web Development & Digital Marketing in Mawana, Meerut | Since 2020",
+  title: "SocialFly Networks | Best Agentic AI & Web Development Company",
   description:
-    "Looking for the best website developer in Mawana or Meerut? SocialFly Networks delivers custom websites, mobile apps, SEO & Meta Ads. 100+ happy clients. ₹15,000 onwards. Free consultation: +91-9411978307",
+    "Looking for the best agentic AI company or a top web development company? SocialFly Networks builds AI agents, custom websites, mobile apps, SaaS platforms and growth marketing programs. 100+ projects delivered. Free consultation: +91-9411978307",
   keywords: [
-    "web development mawana",
-    "website design meerut",
-    "best web developer near me",
-    "digital marketing agency meerut",
-    "app development mawana",
-    "seo services meerut",
-    "google business profile mawana",
-    "meta ads agency meerut",
-    "ecommerce website mawana",
+    "best agentic ai company",
+    "agentic ai company",
+    "agentic ai development company",
+    "ai agent development company",
+    "ai automation company",
+    "enterprise ai company",
+    "web development company",
+    "best web development company",
+    "custom web development company",
+    "mobile app development company",
+    "saas development company",
+    "ecommerce development company",
+    "digital marketing company",
+    "seo company",
+    "ui ux design company",
+    "blockchain development company",
+    "cloud architecture company",
     "socialfly networks",
-    "affordable website meerut",
-    "mobile app developer ncr",
   ],
   alternates: {
     canonical: "https://socialflynetworks.com",
   },
   openGraph: {
-    title: "SocialFly Networks | Mawana & Meerut's #1 Digital Agency",
+    title: "SocialFly Networks | Best Agentic AI & Web Development Company",
     description:
-      "Transform your business online. Custom websites from ₹15,000, mobile apps, SEO & digital marketing. Trusted by 100+ NCR businesses since 2020.",
+      "Build agentic AI products, custom web platforms, mobile apps and SaaS with SocialFly Networks. 100+ projects delivered worldwide.",
     url: "https://socialflynetworks.com",
     images: [
       {
         url: "https://socialflynetworks.com/og-image-optimized.jpg",
         width: 1200,
         height: 630,
-        alt: "SocialFly Networks - Web Development & Digital Marketing Agency in Mawana, Meerut",
+        alt: "SocialFly Networks - Agentic AI & Web Development Company",
       },
     ],
   },
   twitter: {
-    title: "SocialFly Networks | #1 Digital Agency in Mawana, Meerut",
+    title: "SocialFly Networks | Best Agentic AI & Web Development Company",
     description:
-      "Custom websites, apps & digital marketing. 100+ happy clients. Call +91-9411978307 for free consultation.",
+      "Agentic AI agents, custom web & app development, SaaS and growth marketing. 100+ projects delivered. Call +91-9411978307.",
   },
 };
 
@@ -136,13 +142,13 @@ const testimonialItems = [
   {
     image: "https://i.pravatar.cc/300?img=2",
     title: "Mike Chen",
-    subtitle: "Founder, Local Mart Meerut",
+    subtitle: "Founder, Local Mart",
     handle: "@mikechen",
     borderColor: "#10B981",
     gradient: "linear-gradient(180deg, #10B981, #000)",
     url: "https://linkedin.com/in/mikechen",
     quote:
-      "Outstanding local SEO and Google Business optimization. We're now the top-ranked store in Mawana area.",
+      "Their AI agent built on top of our catalog automated 60% of customer queries within weeks. Outstanding engineering.",
   },
   {
     image: "https://i.pravatar.cc/300?img=3",
@@ -153,7 +159,7 @@ const testimonialItems = [
     gradient: "linear-gradient(145deg, #F59E0B, #000)",
     url: "https://linkedin.com/in/priyasharma",
     quote:
-      "Their EduFly ERP system streamlined our entire institution. Excellent support team in Meerut!",
+      "Their EduFly ERP system streamlined our entire institution. Reliable team and excellent post-launch support.",
   },
   {
     image: "https://i.pravatar.cc/300?img=4",
@@ -164,7 +170,7 @@ const testimonialItems = [
     gradient: "linear-gradient(180deg, #EF4444, #000)",
     url: "https://linkedin.com/in/rajeshkumar",
     quote:
-      "Meta ads campaign brought 200+ new customers to our Mawana showroom. ROI exceeded expectations!",
+      "Their performance marketing program brought 200+ new customers in a quarter. ROI exceeded expectations!",
   },
   {
     image: "https://i.pravatar.cc/300?img=5",
@@ -175,7 +181,7 @@ const testimonialItems = [
     gradient: "linear-gradient(145deg, #8B5CF6, #000)",
     url: "https://linkedin.com/in/anitaverma",
     quote:
-      "Professional team, on-time delivery, and excellent post-launch support. Highly recommend for NCR businesses!",
+      "Professional team, on-time delivery, and excellent post-launch support. Highly recommended.",
   },
 ];
 
@@ -201,9 +207,9 @@ function HomePageStructuredData() {
     "@type": "WebPage",
     "@id": "https://socialflynetworks.com/#webpage",
     url: "https://socialflynetworks.com",
-    name: "SocialFly Networks - Web Development, Mobile Apps & Digital Marketing in Mawana, Meerut",
+    name: "SocialFly Networks - Best Agentic AI & Web Development Company",
     description:
-      "Leading IT company in Mawana, Meerut offering custom web development, mobile apps, ecommerce solutions, Google Business optimization, Meta ads & local SEO.",
+      "Agentic AI and web development company building AI agents, custom web platforms, mobile apps, SaaS products, ecommerce, and growth marketing programs.",
     isPartOf: { "@id": "https://socialflynetworks.com/#website" },
     about: { "@id": "https://socialflynetworks.com/#organization" },
     primaryImageOfPage: {
@@ -225,7 +231,7 @@ function HomePageStructuredData() {
       "@type": "SpeakableSpecification",
       cssSelector: ["h1", "h2", ".hero-text"],
     },
-    specialty: "Digital Services for Local Businesses",
+    specialty: "Agentic AI & Custom Software Engineering",
   };
 
   const howToSchema = {
@@ -418,41 +424,42 @@ export default function HomePage() {
         - Visually hidden but accessible to screen readers
       */}
       <div className="sr-only" aria-hidden="false">
-        <h2>Web Development Services in Mawana and Meerut</h2>
+        <h2>Best Agentic AI & Web Development Company</h2>
         <p>
-          SocialFly Networks provides professional web development, mobile app
-          development, and digital marketing services in Mawana, Meerut, and
-          across NCR. Our team of expert developers and marketers help local
-          businesses establish a strong online presence.
+          SocialFly Networks is an agentic AI and web development company
+          building AI agents, custom websites, mobile apps, SaaS products,
+          ecommerce platforms and growth marketing programs for businesses
+          worldwide. Our team of AI engineers, full-stack developers and
+          designers ships production-grade systems end to end.
         </p>
         <h3>Services We Offer:</h3>
         <ul>
-          <li>Custom Website Development in Mawana</li>
-          <li>Mobile App Development in Meerut</li>
-          <li>E-commerce Website Development</li>
-          <li>SEO Services in Meerut and NCR</li>
-          <li>Google Business Profile Optimization</li>
-          <li>Meta Ads (Facebook & Instagram) Management</li>
-          <li>Google Ads Campaign Management</li>
-          <li>Social Media Marketing</li>
-          <li>UI/UX Design Services</li>
+          <li>Agentic AI Development Company</li>
+          <li>AI Agent & Automation Engineering</li>
+          <li>Generative AI & LLM Application Development</li>
+          <li>MLOps & AI Platform Engineering</li>
+          <li>Custom Web Development Company</li>
+          <li>SaaS &amp; Web Application Development</li>
+          <li>Mobile App Development Company</li>
+          <li>E-commerce Development</li>
+          <li>Cloud Architecture &amp; DevOps</li>
+          <li>Cybersecurity &amp; Zero Trust</li>
+          <li>Blockchain &amp; Web3 Engineering</li>
+          <li>Data Engineering &amp; Analytics</li>
+          <li>UI/UX Design</li>
+          <li>SEO &amp; Digital Marketing</li>
           <li>EduFly ERP for Schools and Colleges</li>
         </ul>
-        <h3>Areas We Serve:</h3>
+        <h3>Why teams choose SocialFly Networks</h3>
         <ul>
-          <li>Mawana, Uttar Pradesh</li>
-          <li>Meerut, Uttar Pradesh</li>
-          <li>Noida, Uttar Pradesh</li>
-          <li>Greater Noida</li>
-          <li>Ghaziabad</li>
-          <li>Delhi NCR</li>
-          <li>Hapur</li>
-          <li>Muzaffarnagar</li>
+          <li>Best agentic AI company for production-ready AI agents</li>
+          <li>Top web development company for custom platforms and SaaS</li>
+          <li>End-to-end engineering: strategy, build, scale and operate</li>
+          <li>100+ projects delivered worldwide with a 98% satisfaction rate</li>
         </ul>
         <p>
-          Contact SocialFly Networks at +91-9411978307 for a free consultation.
-          We offer affordable website packages starting from ₹15,000 with free
-          SSL, hosting setup, and 3 months of support.
+          Contact SocialFly Networks at +91-9411978307 for a free consultation
+          on your agentic AI, web, or app project.
         </p>
       </div>
     </>

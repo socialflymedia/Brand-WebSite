@@ -1,4 +1,4 @@
-// app/resources/blog/page.tsx
+// app/blog/page.tsx
 import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
@@ -6,8 +6,8 @@ import { getAllPosts } from "./posts";
 
 export const metadata: Metadata = {
   title: "Blog — Insights on Web, App & Marketing | SocialFly Networks",
-  description: "Articles about web development, product design, marketing and building businesses in Mawana & Meerut.",
-  alternates: { canonical: "https://socialflynetworks.com/resources/blog" },
+  description: "Articles about agentic AI, web development, product design, marketing and building modern digital businesses.",
+  alternates: { canonical: "https://socialflynetworks.com/blog" },
   openGraph: { images: ["/resources/blog-og.jpg"], locale: "en_IN" },
   robots: { index: true, follow: true }
 };
@@ -24,7 +24,7 @@ export default function BlogIndex() {
             "@context": "https://schema.org",
             "@type": "Blog",
             name: "SocialFly Networks Blog",
-            url: "https://socialflynetworks.com/resources/blog",
+            url: "https://socialflynetworks.com/blog",
             description: "Articles and insights on building, launching and growing digital products."
           })
         }}

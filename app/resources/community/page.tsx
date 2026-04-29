@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Community — Meetups, Events & Collaboration | SocialFly Networks",
-  description: "Join our community — meetups, workshops and collaboration channels for builders in Mawana and Meerut.",
+  description: "Join our community — meetups, workshops and collaboration channels for builders working with agentic AI, web and app development.",
   alternates: { canonical: "https://socialflynetworks.com/resources/community" },
   openGraph: { images: ["/resources/community-og.jpg"], locale: "en_IN" },
   robots: { index: true, follow: true }
@@ -16,16 +16,16 @@ export default function CommunityPage() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center">
           <h1 className="text-5xl font-bold text-white mb-4">Community</h1>
-          <p className="text-gray-300">Events, workshops and ways to collaborate locally in Mawana / Meerut and online.</p>
+          <p className="text-gray-300">Events, workshops and ways to collaborate online and in person.</p>
         </div>
 
         <div className="mt-10 grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           <div className="bg-gray-950 border border-gray-800 rounded-2xl p-6">
-            <h3 className="text-lg font-semibold text-white">Upcoming Meetup — Mawana Builders</h3>
+            <h3 className="text-lg font-semibold text-white">Upcoming Meetup — SocialFly Builders</h3>
             <p className="text-gray-400 mt-2">Monthly meetup: talks, show-and-tell and office hours with our team.</p>
             <div className="mt-4 text-sm text-gray-300">
               <div>📅 Next: Sep 26, 2025</div>
-              <div>📍 Venue: SocialFly Studio — Mawana Road, Meerut</div>
+              <div>📍 Venue: SocialFly Studio</div>
             </div>
             <div className="mt-6">
               <a href="/contact" className="px-4 py-2 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-lg">Request a seat</a>

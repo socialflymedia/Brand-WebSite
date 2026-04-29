@@ -10,7 +10,7 @@ function toRfc822(dateStr: string) {
 
 export async function GET() {
   const siteUrl = "https://socialflynetworks.com";
-  const blogUrl = `${siteUrl}/resources/blog`;
+  const blogUrl = `${siteUrl}/blog`;
   const posts = getAllPosts();
 
   const itemsXml = posts
@@ -46,7 +46,7 @@ export async function GET() {
       <description>Insights, tutorials and stories from SocialFly Networks (Web, App & Marketing)</description>
       <language>en-IN</language>
       <lastBuildDate>${toRfc822(posts[0]?.date ?? new Date().toISOString())}</lastBuildDate>
-      <atom:link href="${siteUrl}/resources/rss.xml" rel="self" type="application/rss+xml" />
+      <atom:link href="${siteUrl}/blog/rss.xml" rel="self" type="application/rss+xml" />
       ${itemsXml}
     </channel>
   </rss>`;
